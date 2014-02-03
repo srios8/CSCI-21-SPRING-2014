@@ -39,13 +39,16 @@ int main (int argc, char* argv[])
  */
 bool isFactor (int numerator, int denominator)
 {
-    if(numerator > denominator)
-        return true;
-    else if(numerator < denominator)
-        return false;
-        
-        
+    int n = numerator % denominator;
     
+    if (n == 0) 
+    {
+        return true;
+    }
+    else if(n != 0)
+    {
+        return false;
+    }
 }
 
 /*
@@ -63,10 +66,12 @@ bool isFactor (int numerator, int denominator)
  */
 void makeChange (int initialValue, int& quarters, int& dimes, int& nickels, int& pennies)
 {
-	quarters = initialValue/25;
-	dimes = quarters/10;
-	nickels = dimes/5;
-	pennies = nickels/1;
+    quarters = initialValue/25;
+    int d = initialValue - quarters*25;
+    dimes = d/10;
+    int n = d - dimes*10;
+    nickels = n/5;
+    pennies = n - nickels*5;
 }
 
 /*
