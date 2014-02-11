@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 # Grader comments 2014.02.05
 #
@@ -6,6 +7,13 @@
 # code. Feel free to ask Boyd or me for help during
 # the lab. --Rob
 #
+=======
+FLAGS = -Wall -Wextra -werror - pedantic
+
+
+
+
+>>>>>>> upstream/master
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
@@ -16,7 +24,7 @@
 # Target for programming challenge 1
 # Date completed: 1-27-2014
 challenge-1: challenge-1.cpp
-	g++ -o challenge-1 challenge-1.cpp
+	g++ $(FLAGS) PC1.cpp -o -PC1
 
 
 
@@ -30,9 +38,9 @@ challenge-1: challenge-1.cpp
 
 # Target for programming challenge 2
 # Date completed: 1-29-2014
-challenge-2: challenge-2.cpp
-	g++ -o challenge-2 challenge-2.cpp
-
+challenge-2: CP2.cpp
+	g++ $(FLAGS) PC2.cpp -o -PC2
+	
 
 
 
@@ -45,8 +53,8 @@ challenge-2: challenge-2.cpp
 
 # Target for programming challenge 3
 # Date completed: 2-3-2014
-challenge-3: challenge-3.cpp
-	g++ -o challenge-3 challenge-3.cpp
+challenge-3: CP3.cpp
+	g++ $(FLAGS) PC3.cpp -o -PC3
 	
 
 
@@ -61,5 +69,20 @@ challenge-3: challenge-3.cpp
 
 # Target for programming challenge 4
 # Date completed: 2-5-2014
-challenge-4: challenge-4.cpp
-	g++ -o challenge-4 challenge-4.cpp
+challenge-4: CP4.cpp
+	g++ $(FLAGS) PC4.cpp -o -PC4
+	
+	
+	
+	
+# Makefile for programming challenges
+#
+# CSCI 21, Spring 2014
+#
+# Programmer: Stacy A. Rios-Jimenez
+#
+
+# Target for programming challenge 5
+# Date completed: 2-10-2014
+challenge-5: CP5.cpp
+	g++ $(FLAGS) PC5.cpp -o -PC5
