@@ -1,19 +1,17 @@
-<<<<<<< HEAD
 #
-# Grader comments 2014.02.05
+# Grader comments 2014.02.10
 #
-# You need to update your makefile such that it
-# can actually be used for building your source
-# code. Feel free to ask Boyd or me for help during
-# the lab. --Rob
+# Let's talk in class on Wednesday and get the
+# kinks worked out of this makefile. You'll need
+# it to be in good working order for all the future
+# assignments. Give me a shout when you have a
+# couple of minutes to work on it. --Rob
 #
-=======
 FLAGS = -Wall -Wextra -werror - pedantic
 
 
 
 
->>>>>>> upstream/master
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
