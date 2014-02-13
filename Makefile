@@ -1,74 +1,71 @@
 #
-# Grader comments 2014.02.10
+# Grader comments 2014.02.13
 #
-# Let's talk in class on Wednesday and get the
-# kinks worked out of this makefile. You'll need
-# it to be in good working order for all the future
-# assignments. Give me a shout when you have a
-# couple of minutes to work on it. --Rob
+# Your makefile doesn't build your code. I
+# have to give you a zero. Sorry. It looks like
+# you know what you're doing in this file, but
+# I'll be glad to help if you need anything. Once
+# you get the makefile working properly, be sure
+# to add all the compile flags that Boyd went over
+# in class. Those will be required on all assignments now.
+# --Rob
 #
-FLAGS = -Wall -Wextra -werror - pedantic
-
-
-
-
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
 #
-# Programmer: Stacy A. Rios-Jimenez
+# Programmer: Stacy Rios
 #
 
 # Target for programming challenge 1
 # Date completed: 1-27-2014
 challenge-1: challenge-1.cpp
-	g++ $(FLAGS) PC1.cpp -o -PC1
-
-
-
-
+	g++ -o challenge-1 challenge-1.cpp
+	
+	
+	
+	
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
 #
-# Programmer: Stacy A. Rios-Jimenez
+# Programmer: Stacy Rios
 #
 
 # Target for programming challenge 2
 # Date completed: 1-29-2014
-challenge-2: CP2.cpp
-	g++ $(FLAGS) PC2.cpp -o -PC2
+challenge-2: challenge-2.cpp
+	g++ -o challenge-2 challenge-2.cpp
 	
-
-
-
+	
+	
+	
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
 #
-# Programmer: Stacy A. Rios-Jimenez
+# Programmer: Stacy Rios
 #
 
 # Target for programming challenge 3
-# Date completed: 2-3-2014
-challenge-3: CP3.cpp
-	g++ $(FLAGS) PC3.cpp -o -PC3
+# Date completed: 2-5-2014
+challenge-3: challenge-3.cpp
+	g++ -o challenge-3 challenge-3.cpp
 	
-
-
-
-
+	
+	
+	
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
 #
-# Programmer: Stacy A. Rios-Jimenez
+# Programmer: Stacy Rios
 #
 
 # Target for programming challenge 4
-# Date completed: 2-5-2014
-challenge-4: CP4.cpp
-	g++ $(FLAGS) PC4.cpp -o -PC4
+# Date completed: 2-10-2014
+challenge-4: challenge-4.cpp
+	g++ -o challenge-4 challenge-4.cpp
 	
 	
 	
@@ -77,10 +74,27 @@ challenge-4: CP4.cpp
 #
 # CSCI 21, Spring 2014
 #
-# Programmer: Stacy A. Rios-Jimenez
+# Programmer: Stacy Rios
 #
 
 # Target for programming challenge 5
-# Date completed: 2-10-2014
-challenge-5: CP5.cpp
-	g++ $(FLAGS) PC5.cpp -o -PC5
+# Date completed: 2-12-2014
+challenge-5: challenge-5.cpp
+	g++ -o challenge-5 challenge-5.cpp
+	
+	
+	
+	
+# Makefile for programming challenges
+#
+# CSCI 21, Spring 2014
+#
+# Programmer: Stacy Rios
+#
+
+# Target for programming challenge 6
+# Date completed: 2-19-2014
+challenge-6: challenge-6.cpp
+	g++ -o challenge-6 challenge-6.cpp
+	
+	

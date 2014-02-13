@@ -148,16 +148,6 @@ int findLarger(int n1, int n2)
 
 
 
-/*
- * function name: getStats
- * parameters: string s (call-by-value), int alphaCount (call-by-reference), int digitCount (call-by-reference)
- * default arguments: none
- * return type: int
- * 
- * Return the length of string s. On return alphaCount should contain a count of the number of alphabetic 
- * characters in s, digitCount should contain a count of the number of digits in s.
- */
-
 int getStats(string s, int& alphaCount, int& digitCount)
 {
    
@@ -165,17 +155,6 @@ int getStats(string s, int& alphaCount, int& digitCount)
  
  
  
- 
- /*
- * function name: buildMessage
- * parameters: string s (call-by-value), bool allCaps (call-by-value)
- * default arguments: s = "" (empty string), allCaps = false
- * return type: string
- * 
- * Return the string "Message: STRING", where STRING is replaced by the value of the parameter s. If allCaps is 
- * true, convert s to all uppercase letters before concatenating it with "Message: ". If s is empty string, 
- * return "Message: empty".
- */
  
  string buildMessage(string s, bool allCaps)
  {
@@ -194,13 +173,6 @@ int getStats(string s, int& alphaCount, int& digitCount)
 		return s;
 	}
     return "Message: " + s;
-    
- }
-
-
-
-
-
 
 /*
  * Unit testing functions. Do not alter.
