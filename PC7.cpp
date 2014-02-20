@@ -75,6 +75,12 @@ bool processFile (string filename)
   ifstream filein(filename.c_str());
     if(filein.good())
     {
+	// Grader comments 2014.02.19
+	//
+	// Make sure to remove all the extra output before you
+	// turn in your work. Boyd counts off points for
+	// extraneous output.
+	//
         cout << "Ready to read input from file" << endl;
         int nextline;
         while(filein >> nextline)
