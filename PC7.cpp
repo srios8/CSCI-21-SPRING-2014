@@ -47,7 +47,7 @@ void unittest ();
 int main()
 {
 	unittest();
-	
+
 	return 0;
 }
 
@@ -75,7 +75,12 @@ bool processFile (string filename)
   ifstream filein(filename.c_str());
     if(filein.good())
     {
-        cout << "Ready to read input from file" << endl;
+	// Grader comments 2014.02.19
+	//
+	// Make sure to remove all the extra output before you
+	// turn in your work. Boyd counts off points for
+	// extraneous output.
+	//
         int nextline;
         while(filein >> nextline)
         {
@@ -111,61 +116,61 @@ bool processFile (string filename)
 void unittest ()
 {
 	cout << "\nSTARTING UNIT TEST\n\n";
-	
+
 	counters[10] = 0, counters[20] = 0, counters[20] = 0, counters[40] = 0, counters[50] = 0;
 	counters[99] = 0; // errors
-	
+
 	processFile("challenge-7-input.txt");
-	
+
 	try {
 		btassert<bool>(counters[10] == 15);
 		cout << "Passed TEST 1: counters[10]\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 1 counters[10] #\n";
 	}
-	
+
 	try {
 		btassert<bool>(counters[20] == 14);
 		cout << "Passed TEST 2: counters[20]\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 2 counters[20] #\n";
 	}
-	
+
 	try {
 		btassert<bool>(counters[30] == 13);
 		cout << "Passed TEST 3: counters[30]\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 3 counters[30] #\n";
 	}
-	
+
 	try {
 		btassert<bool>(counters[40] == 12);
 		cout << "Passed TEST 4: counters[40]\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 4 counters[40] #\n";
 	}
-	
+
 	try {
 		btassert<bool>(counters[50] == 11);
 		cout << "Passed TEST 5: counters[50]\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 5 counters[50] #\n";
 	}
-	
+
 	try {
 		btassert<bool>(counters[99] == 35);
 		cout << "Passed TEST 6: counters[99]\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 6 counters[99] #\n";
 	}
-	
+
 	try {
 		btassert<bool>(processFile("non-existent-file.txt") == false);
 		cout << "Passed TEST 7: processFile(\"non-existent-file.txt\")\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 7 processFile(\"non-existent-file.txt\") #\n";
 	}
-	
+
 	cout << "\nUNIT TEST COMPLETE\n\n";
 }
 

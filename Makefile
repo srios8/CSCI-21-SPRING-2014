@@ -120,3 +120,8 @@ PC7: PC7.cpp
 # Date completed: 2-21-2014
 Project1: Project1.cpp
 	g++ $(FLAGS) Project1.cpp -o Project1
+	
+	
+	
+	
+	

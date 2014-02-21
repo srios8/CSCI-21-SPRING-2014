@@ -68,10 +68,11 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+//int main (int argc, char* argv[])
+int main()
 {
 	unittest();
-	
+
 	return 0;
 }
 
@@ -154,96 +155,96 @@ void swapValues (int values[], int index1, int index2)
 void unittest ()
 {
 	cout << "\nSTARTING UNIT TEST\n\n";
-	
+
 	int values[] = {3, 5, 7, 9, 11};
 	int size = 5;
-	
+
 	try {
 		btassert<bool>(prepareForDisplay(values, size) == "3,5,7,9,11");
 		cout << "Passed TEST 1: prepareForDisplay(values, size)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 1 prepareForDisplay(values, size) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(prepareForDisplay(values, size, ' ') == "3 5 7 9 11");
 		cout << "Passed TEST 2: prepareForDisplay(values, size, ' ')\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 2 prepareForDisplay(values, size, ' ') #\n";
 	}
-	
+
 	try {
 		btassert<bool>(prepareForDisplay(values, size, ':') == "3:5:7:9:11");
 		cout << "Passed TEST 3: prepareForDisplay(values, size, ':')\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 3 prepareForDisplay(values, size, ':') #\n";
 	}
-	
+
 	try {
 		btassert<bool>(hasValue(values, size, 0) == false);
 		cout << "Passed TEST 4: hasValue(values, size, 0)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 4 hasValue(values, size, 0) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(hasValue(values, size, 3) == true);
 		cout << "Passed TEST 5: hasValue(values, size, 3)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 5 hasValue(values, size, 3) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(hasValue(values, size, 11) == true);
 		cout << "Passed TEST 6: hasValue(values, size, 11)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 6 hasValue(values, size, 11) #\n";
 	}
-	
+
 	bool error = true;
-	
+
 	try {
 		btassert<bool>(valueAt(values, size, 0, error) == 3 && error == false);
 		cout << "Passed TEST 7: valueAt(values, size, 0, error)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 7 valueAt(values, size, 0, error) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(valueAt(values, size, 5, error) == 0 && error == true);
 		cout << "Passed TEST 8: valueAt(values, size, 5, error)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 8 valueAt(values, size, 5, error) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(valueAt(values, size, 4, error) == 11 && error == false);
 		cout << "Passed TEST 9: valueAt(values, size, 4, error)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 9 valueAt(values, size, 4, error) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(sum(values, size) == 35);
 		cout << "Passed TEST 10: sum(values, size)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 10 sum(values, size) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(sum(values, 1) == 3);
 		cout << "Passed TEST 11: sum(values, 1)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 11 sum(values, 1) #\n";
 	}
-	
+
 	try {
 		btassert<bool>(sum(values, 0) == 0);
 		cout << "Passed TEST 12: sum(values, 0)\n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 12 sum(values, 0) #\n";
 	}
-	
+
 	try {
 		swapValues(values, 0, 4);
 		btassert<bool>(values[0] == 11 && values[4] == 3);
@@ -251,7 +252,7 @@ void unittest ()
 	} catch (bool b) {
 		cout << "# FAILED TEST 13 swapValues(values, 0, 4) #\n";
 	}
-	
+
 	try {
 		swapValues(values, 1, 3);
 		btassert<bool>(values[1] == 9 && values[3] == 5);
@@ -259,7 +260,7 @@ void unittest ()
 	} catch (bool b) {
 		cout << "# FAILED TEST 14 swapValues(values, 1, 3) #\n";
 	}
-	
+
 	try {
 		swapValues(values, 2, 2);
 		btassert<bool>(values[2] == 7);
@@ -267,7 +268,7 @@ void unittest ()
 	} catch (bool b) {
 		cout << "# FAILED TEST 15 swapValues(values, 2, 2) #\n";
 	}
-	
+
 	cout << "\nUNIT TEST COMPLETE\n\n";
 }
 
