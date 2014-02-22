@@ -7,7 +7,7 @@
 #include <climits>
 #include <iostream>
 #include <string>
-#include <stdlib.h>
+#include <sstream>
 using namespace std;
 
 /*count the number of alphabetic characters and the number 
@@ -71,9 +71,35 @@ int main()
 
 
 
+
 void countCharacters (string theString, int& alpha, int& num)
 {
-    
+    int i = 1;
+    int space = 0;
+    int punct = 0;
+    int arraySize = theString.length();
+    while(i<=arraySize)
+    {
+        if(isalpha(theString[i-1]))
+        {
+            alpha++;
+        }
+        else if(isdigit(theString[i-1]))
+        {
+            num++;
+        }
+        else if(isspace(theString[i-1]))
+        {
+            space++;
+        }
+        else if(ispunct(theString[i-1]))
+        {
+            punct++;
+        }
+        i++;
+    }
+    alpha = arraySize - num - space -punct;
+    num = arraySize -alpha - space - punct;
 }
 
 
@@ -82,16 +108,22 @@ void countCharacters (string theString, int& alpha, int& num)
 string upAndDown (string theString)
 {
     stringstream ss;
-    int count = 0;
     int i = 0;
-    while(i<=theString.length())
+    int arraySize = theString.length();
+    while(i<arraySize)
     {
-        if(theString[i]==' ')
-        count=+1;
-        else
-        count = count;
+        if(i % 2 == 0)
+        {
+            toupper(theString[i]);
+            ss << theString[i];
+        }
+        else if(i % 2 != 0)
+        {
+            tolower(theString[i]);
+            ss << theString[i];
+        }
+        i++;
     }
-    ss << count;
     return ss.str();
 }
 
@@ -100,7 +132,19 @@ string upAndDown (string theString)
 
 int countWords (string theString)
 {
-    return 0;
+    int i = 1;
+    char spaces = ' ';
+    int arraySize = theString.length();
+    while(i<=arraySize)
+    {
+        if(theString[i-1] == spaces)
+        {
+            spaces =+ 1;
+        }
+        i++;
+    }
+    int words = arraySize - spaces;
+    return words;
 }
 
 
@@ -109,12 +153,12 @@ int countWords (string theString)
 int computeAverage (int values [], int arraySize)
 {
     int sum = 0;
-    int average= 0;
+    int average = 0;
     int i = 0;
-    i++;
-    while(i<=arraySize)
+    while(i<arraySize)
     {
-        sum =+ values[i];
+        sum=+values[i];
+        i++;
     }
     average = sum/arraySize;
     return average;
@@ -125,15 +169,15 @@ int computeAverage (int values [], int arraySize)
 
 int findMinValue (int values [], int arraySize)
 {
-    int minValue = values[0];
+    int minValue = 0;
     int i = 0;
-    i++;
-    while(i<=arraySize)
+    while(i<arraySize)
     {
-        if(values[i]<=minValue)
+        if(values[i+1]<=values[i])
         {
-            minValue = values[i];
+            minValue = values[i+1];
         }
+        i++;
     }
     return minValue;
 }
@@ -143,15 +187,15 @@ int findMinValue (int values [], int arraySize)
 
 int findMaxValue (int values [], int arraySize)
 {
-    int maxValue = -5;
+    int maxValue = 0;
     int i = 0;
-    i++;
-    while(i<=arraySize)
+    while(i<arraySize)
     {
-        if(values[i]<=maxValue)
+        if(values[i+1]>=values[i])
         {
-            maxValue = values[i];
+            maxValue = values[i+1];
         }
+        i++;
     }
     return maxValue;
 }
