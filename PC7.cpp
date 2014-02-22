@@ -81,6 +81,10 @@ bool processFile (string filename)
 	// turn in your work. Boyd counts off points for
 	// extraneous output.
 	//
+<<<<<<< HEAD
+=======
+        cout << "Ready to read input from file" << endl;
+>>>>>>> a87476f67a7152619c37d7813d7dff5774837e50
         int nextline;
         while(filein >> nextline)
         {
