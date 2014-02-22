@@ -114,26 +114,26 @@ string upAndDown (string theString)
     stringstream ss;
     int i = 0;
     int arraySize = theString.length();
-    while(i < arraySize)
+    while(arraySize > i)
     {
-        if(i % 2 == 0)
+        if(i==0)
         {
-            toupper(theString[i]);
-            ss << theString[i];
+            theString[i] = toupper(theString[i]);
         }
         else if(i % 2!= 0)
         {
-            tolower(theString[i]);
-            ss << theString[i];
+            theString[i] = tolower(theString[i]);
         }
-        else if(theString=="")
+        else if(i % 2 == 0)
         {
-            ss << "";
+            theString[i] = toupper(theString[i]);
         }
         else
         {
-            ss << theString[i];
+            theString = "";
+            ss << theString;
         }
+        ss << theString[i];
         i++;
     }
     return ss.str();
@@ -175,22 +175,14 @@ int countWords (string theString)
 
 int computeAverage (int values [], int arraySize)
 {
-    /*int sum = 0;
+    int sum = 0;
     int average = 0;
-    int i = 0;
-    while(arraySize > i)
-    {
-            sum =+ values[i];
-        
-        i++;
-        average = sum/arraySize;
-    }
-    //average = sum/arraySize;
-    return average;*/
     for(int i = 0; i < arraySize; i++)
     {
-        if()   
+        sum+=values[i]++;
+        average =+ sum/arraySize;
     }
+    return average;
 }
 
 
@@ -198,15 +190,13 @@ int computeAverage (int values [], int arraySize)
 
 int findMinValue (int values [], int arraySize)
 {
-    int minValue = 0;
-    int i = 0;
-    while(i<arraySize)
+    int minValue = values[0];
+    for(int i = 1; i < arraySize; i++)
     {
-        if(values[i+1]<=values[i])
+        if(values[i] < minValue)
         {
-            minValue = values[i+1];
+            minValue = values[i];
         }
-        i++;
     }
     return minValue;
 }
@@ -217,18 +207,16 @@ int findMinValue (int values [], int arraySize)
 int findMaxValue (int values [], int arraySize)
 {
     int maxValue = 0;
-    int i = 0;
-    while(i < arraySize)
+    for(int i = 0; i < arraySize; i++)
     {
-        if(values[i+1] > values[i])
+        if(values[i] > maxValue)
         {
-            maxValue = values[i+1];
+            maxValue = values[i];
         }
-        else 
+        else
         {
-            maxValue = values[i+1];
+            maxValue = values[0];
         }
-        i++;
     }
     return maxValue;
 }
