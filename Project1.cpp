@@ -74,32 +74,36 @@ int main()
 
 void countCharacters (string theString, int& alpha, int& num)
 {
-    int i = 1;
-    int space = 0;
-    int punct = 0;
+    int i = 0;
+    int other = 0;
+    int letters = 0;
+    int digits = 0;
     int arraySize = theString.length();
-    while(i<=arraySize)
+    while(arraySize > i)
     {
-        if(isalpha(theString[i-1]))
+        if(isalpha(theString[i]))
         {
-            alpha++;
+            letters++;
         }
-        else if(isdigit(theString[i-1]))
+        else if(isdigit(theString[i]))
         {
-            num++;
+            digits++;
         }
-        else if(isspace(theString[i-1]))
+        else if(theString=="")
         {
-            space++;
+            letters = 0;
+            digits = 0;
+            other = 0;
         }
-        else if(ispunct(theString[i-1]))
+        
+        else 
         {
-            punct++;
+            other++;
         }
         i++;
+        alpha = letters;
+        num = digits;
     }
-    alpha = arraySize - num - space -punct;
-    num = arraySize -alpha - space - punct;
 }
 
 
@@ -110,16 +114,24 @@ string upAndDown (string theString)
     stringstream ss;
     int i = 0;
     int arraySize = theString.length();
-    while(i<arraySize)
+    while(i < arraySize)
     {
         if(i % 2 == 0)
         {
             toupper(theString[i]);
             ss << theString[i];
         }
-        else if(i % 2 != 0)
+        else if(i % 2!= 0)
         {
             tolower(theString[i]);
+            ss << theString[i];
+        }
+        else if(theString=="")
+        {
+            ss << "";
+        }
+        else
+        {
             ss << theString[i];
         }
         i++;
@@ -132,18 +144,29 @@ string upAndDown (string theString)
 
 int countWords (string theString)
 {
-    int i = 1;
+    int words = 0;
+    int i = 0;
+    int other = 0;
     char spaces = ' ';
+    int numSpaces = 0;
     int arraySize = theString.length();
-    while(i<=arraySize)
+    while(arraySize > i)
     {
-        if(theString[i-1] == spaces)
+        if(theString[i] == spaces)
         {
-            spaces =+ 1;
+            numSpaces++;
+        }
+        else if(theString == "")
+        {
+            numSpaces = 0;
+        }
+        else
+        {
+            other++;
         }
         i++;
+        words = numSpaces + 1;
     }
-    int words = arraySize - spaces;
     return words;
 }
 
@@ -152,16 +175,22 @@ int countWords (string theString)
 
 int computeAverage (int values [], int arraySize)
 {
-    int sum = 0;
+    /*int sum = 0;
     int average = 0;
     int i = 0;
-    while(i<arraySize)
+    while(arraySize > i)
     {
-        sum=+values[i];
+            sum =+ values[i];
+        
         i++;
+        average = sum/arraySize;
     }
-    average = sum/arraySize;
-    return average;
+    //average = sum/arraySize;
+    return average;*/
+    for(int i = 0; i < arraySize; i++)
+    {
+        if()   
+    }
 }
 
 
@@ -189,9 +218,13 @@ int findMaxValue (int values [], int arraySize)
 {
     int maxValue = 0;
     int i = 0;
-    while(i<arraySize)
+    while(i < arraySize)
     {
-        if(values[i+1]>=values[i])
+        if(values[i+1] > values[i])
+        {
+            maxValue = values[i+1];
+        }
+        else 
         {
             maxValue = values[i+1];
         }
