@@ -52,39 +52,12 @@ int main()
 }
 
 
-/*
- * Open and read the contents of a text file. Each line of the
- * file will contain a single integer of possible values 10, 20, 
- * 30, 40, or 50. Perform the following operations on the input values:
- * <ul>
- * <li>10 -- invoke the function onTen</li>
- * <li>20 -- invoke the function onTwenty</li>
- * <li>30 -- invoke the function onThirty</li>
- * <li>40 -- invoke the function onForty</li>
- * <li>50 -- invoke the function onFifty</li>
- * <li>any other value -- invoke the function onError</li>
- * </ul>
- * @param filename a string containing the name of the file to 
- *        be processed
- * @return true if filename was successfully opened and processed, else false
- */
-
 
 bool processFile (string filename)
 {
   ifstream filein(filename.c_str());
     if(filein.good())
     {
-	// Grader comments 2014.02.19
-	//
-	// Make sure to remove all the extra output before you
-	// turn in your work. Boyd counts off points for
-	// extraneous output.
-	//
-<<<<<<< HEAD
-=======
-        cout << "Ready to read input from file" << endl;
->>>>>>> a87476f67a7152619c37d7813d7dff5774837e50
         int nextline;
         while(filein >> nextline)
         {
