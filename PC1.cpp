@@ -39,7 +39,7 @@ int main()
  */
 string greet (string name)
 {
-	string output =  "Nice to meet you, " + name;
+	string output = "Nice to meet you, " + name ;
 	
 	return output;
 }
@@ -54,21 +54,20 @@ string greet (string name)
  */
 string checkExperience (char hasExperience)
 {
+	string output;
 	if(toupper(hasExperience == 'Y'))
 	{
-	    string output = "Welcome back";
-	    return output;
+	    output = "Welcome back";
 	}
 	else if(toupper(hasExperience == 'N'))
 	{
-	    string output = "Get ready to have some fun";
-	    return output;
+	    output = "Get ready to have some fun";
 	}
-	else if(toupper(hasExperience != 'Y' || hasExperience !='N'))
+	else
 	{
-	    string output = "Please reply with a Yes or a No";
-	    return output;
+	    output = "Please reply with a Yes or a No";
 	}
+	return output;
 }
 
 /*
