@@ -27,7 +27,8 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+int main()
+//int main (int argc, char* argv[])
 {
 	unittest();
 	
@@ -58,8 +59,48 @@ int main (int argc, char* argv[])
  */
 string goldilocks (string item, int number)
 {
-	
-	
+    string output;
+    
+	if(tolower(item=="porridge") && number==1)
+	{
+	    return "This porridge is too hot";
+	}
+	else if(tolower(item=="porridge") && number==2)
+	{
+	    return "This porridge is too cold";
+	}
+	else if(tolower(item=="porridge") && number==3)
+	{
+	    return "This porridge is just right";
+	}
+	else if(tolower(item=="chair") && number==1)
+	{
+	    return "This chair is too big";
+	}
+	else if(tolower(item=="chair") && number==2)
+	{
+	    return "This chair is too big";
+	}
+	else if(tolower(item=="chair") && number==3)
+	{
+	    return "This chair is just right";
+	}
+	else if(tolower(item=="bed") && number==1)
+	{
+	    return "This bed is too hard";
+	}
+	else if(tolower(item=="bed") && number==2)
+    {
+        return "This bed is too soft";
+    }
+	else if(tolower(item=="bed") && number==3)
+	{
+	    return "This bed is just right";
+	}
+	else 
+	{
+	    return "This bed is just right";
+	}
 }
 
 /*
@@ -78,12 +119,22 @@ string goldilocks (string item, int number)
  */
 int rockScissorPaper (char playerOne, char playerTwo)
 {
-    cout << "Player one, choose PAPER, ROCK, or SCISSORS";
-    cin >> playerOne;
-    cout << "Player two, choose PAPER, ROCK, or SCISSORS";
-    cin >> playerTwo;
-    
-	return 0;
+    if(toupper(playerOne=='R' && playerTwo=='S') || toupper(playerOne=='S' && playerTwo=='P') || toupper(playerOne=='P' && playerTwo=='R'))
+    {
+        return 1;
+    }
+    else if(toupper(playerTwo=='R' && playerOne=='S') || toupper(playerTwo=='S' && playerOne=='P') || toupper(playerTwo=='P' && playerOne=='R'))
+    {
+        return 2;
+    }
+    else if(toupper(playerOne==playerTwo))
+    {
+        return 3;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 /*
@@ -103,7 +154,7 @@ int asciiValue (char c)
  */
 string toLower (string input)
 {
-    for(int i = 0; i < input.length(); i++)
+    for(unsigned int i = 0; i < input.length(); i++)
 	{
 	    input[i] = tolower(input[i]);
 	}
@@ -117,7 +168,7 @@ string toLower (string input)
  */
 string toUpper (string input)
 {
-	for(int i = 0; i < input.length(); i++)
+	for(unsigned int i = 0; i < input.length(); i++)
 	{
 	    input[i] = toupper(input[i]);
 	}

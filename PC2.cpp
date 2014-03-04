@@ -20,7 +20,8 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+int main()
+//int main (int argc, char* argv[])
 {
 	unittest();
 	
@@ -45,7 +46,7 @@ bool isFactor (int numerator, int denominator)
     {
         return true;
     }
-    else if(n != 0)
+    else 
     {
         return false;
     }
