@@ -6,7 +6,6 @@
 #include <cassert>
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 using namespace std;
 
 /*
@@ -102,15 +101,13 @@ Prize::Prize(string newName, unsigned int newValue)
     
     if(newValue > 100)
     {
-        for(unsigned int i = 0; i < name.length(); i++)
+        for(unsigned int i = 0; i < newName.length(); i++)
     	{
-    	    name[i] = toupper(name[i]);
+    	    newName[i] = toupper(newName[i]);
     	}
+    	newName += "!";
     }
-    else
-    {
-        name = newName;
-    }
+    name = newName;
 }
 string Prize::getName() const
 {
