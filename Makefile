@@ -165,6 +165,21 @@ PC9: PC9.cpp
 # Date completed: 1-03-2014
 PC10: PC10.cpp
 	g++ $(FLAGS) PC10.cpp -o PC10
+
+
+
+
+# Makefile for programming challenges
+#
+# CSCI 21, Spring 2014
+#
+# Programmer: Stacy A. Rios-Jimenez
+#
+
+# Target for programming challenge 11
+# Date completed: 1-05-2014
+PC11: PC11.cpp
+	g++ $(FLAGS) PC11.cpp -o PC11
 	
 	
 	
