@@ -8,6 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 /*
@@ -84,16 +85,15 @@ string prepareForDisplay (int values[], int size, char separator)
 {
     stringstream ss;
     
-    for(int i=0; i<=size;i++)
-        {
-            ss << values[i];
-            if(i != size-1)
-                {
-                    ss << separator;
-                }
-                
-                return ss.str();
-        }
+    for(int i = 0; i < size; i++)
+    {
+        ss << values[i];
+        if(i != size-1)
+            {
+                ss << separator;
+            }
+    }
+    return ss.str();
 }
 
 
@@ -111,16 +111,16 @@ bool hasValue (int values[], int size, int value)
 
 int valueAt (int values[], int size, int index, bool& error)
 {
-            if(index>=0 && index < size)
-                {
-                    error = false;
-                    return values[index];
-                }
-            else
-                {
-                    error = true;
-                    return 0;
-                }
+    if(index >= 0 && index < size)
+    {
+        error = false;
+        return values[index];
+    }
+    else
+    {
+        error = true;
+        return 0;
+    }
          
 }
 
@@ -138,10 +138,16 @@ int sum (int values[], int size)
 }
 
 
-
+/*
+ * Swap the positions of two values in an integer array. The two
+ * index values must be valid for the array.
+ * @param values an integer array
+ * @param index1 the position of the first value to be swapped
+ * @param index2 the position of the second value to be swapped
+ */
 void swapValues (int values[], int index1, int index2)
 {
-    
+    swap(values[index1], values[index2]);
 }
 
 

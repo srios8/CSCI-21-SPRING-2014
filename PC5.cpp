@@ -88,7 +88,8 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+//int main (int argc, char* argv[])
+int main()
 {
 	unittest();
 	
@@ -102,7 +103,7 @@ int main (int argc, char* argv[])
  
 void hello()
 {    
-    cout << "Hello World";
+    cout << "Hello world!";
 }
 
 
@@ -139,7 +140,7 @@ int findLarger(int n1, int n2)
     {
         return n1;
     }
-    else if(n2>n1)
+    else 
     {
         return n2;
     }
@@ -150,29 +151,54 @@ int findLarger(int n1, int n2)
 
 int getStats(string s, int& alphaCount, int& digitCount)
 {
-   
+    alphaCount = 0;
+    digitCount = 0;
+    int spaceCount = 0;
+    unsigned int i = 0;
+    while(s.length() > i)
+    {
+        if(isalpha(s[i]))
+        {
+            alphaCount++;
+        }
+        else if(isdigit(s[i]))
+        {
+            digitCount++;
+        }
+        else 
+        {
+            spaceCount++;
+        }
+        i++;
+    }
+    return s.length();
 }
  
  
  
- 
+
  string buildMessage(string s, bool allCaps)
  {
-    if(s.length() == 0)
+    stringstream ss;
+    ss << "Message: ";
+    if(allCaps==true)
     {
-        return "Message: empty";
+        for(unsigned int i = 0; i < s.length(); i++)
+    	{
+    	    s[i] = toupper(s[i]);
+    	    ss << s[i];
+    	}
     }
-    else if(allCaps == false)
+    else if(s.length()==0)
     {
-        return "Message: " + s;
+        ss << "empty";
     }
     else
-    for(int i = 0; i < s.length(); i++)
-	{
-	    s[i] = toupper(s[i]);
-		return s;
-	}
-    return "Message: " + s;
+    {
+        ss << s;
+    }
+    return ss.str();
+ }
 
 /*
  * Unit testing functions. Do not alter.

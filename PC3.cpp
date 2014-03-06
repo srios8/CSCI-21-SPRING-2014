@@ -119,15 +119,18 @@ string goldilocks (string item, int number)
  */
 int rockScissorPaper (char playerOne, char playerTwo)
 {
-    if(toupper(playerOne=='R' && playerTwo=='S') || toupper(playerOne=='S' && playerTwo=='P') || toupper(playerOne=='P' && playerTwo=='R'))
+    playerOne = toupper(playerOne);
+    playerTwo = toupper(playerTwo);
+    
+    if((playerOne=='R' && playerTwo=='S') || (playerOne=='S' && playerTwo=='P') || (playerOne=='P' && playerTwo=='R'))
     {
         return 1;
     }
-    else if(toupper(playerTwo=='R' && playerOne=='S') || toupper(playerTwo=='S' && playerOne=='P') || toupper(playerTwo=='P' && playerOne=='R'))
+    else if((playerOne=='S' && playerTwo=='R') || (playerOne=='P' && playerTwo=='S') || (playerOne=='R' && playerTwo=='P'))
     {
         return 2;
     }
-    else if(toupper(playerOne==playerTwo))
+    else if((playerOne==playerTwo))
     {
         return 3;
     }
