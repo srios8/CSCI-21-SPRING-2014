@@ -11,12 +11,6 @@
 #include <streambuf>
 using namespace std;
 
-void hello();
-void printMessage(int n1, int n2);
-int getAnswer();
-int findLarger(int n1, int n2);
-int getStats(string s, int& alphaCount, int& digitCount);
-string buildMessage(string s ="", bool allCaps = false);
 
 
 /*
@@ -27,6 +21,7 @@ string buildMessage(string s ="", bool allCaps = false);
  * 
  * Display "Hello world!" to stdout (no newline character after)
  */
+ void hello();
 
 
 /*
@@ -37,6 +32,7 @@ string buildMessage(string s ="", bool allCaps = false);
  * 
  * Display message to stdout (no newline character after)
  */
+ void printMessage(int n1, int n2);
 
 
 /*
@@ -47,6 +43,7 @@ string buildMessage(string s ="", bool allCaps = false);
  * 
  * Return the value 42
  */
+ int getAnswer();
 
 
 /*
@@ -58,6 +55,7 @@ string buildMessage(string s ="", bool allCaps = false);
  * Return the larger of the two parameter values. Should work correctly
  * if the values are equivalent.
  */
+ int findLarger(int n1, int n2);
 
 
 /*
@@ -69,6 +67,7 @@ string buildMessage(string s ="", bool allCaps = false);
  * Return the length of string s. On return alphaCount should contain a count of the number of alphabetic 
  * characters in s, digitCount should contain a count of the number of digits in s.
  */
+ int getStats(string s, int& alphaCount, int& digitCount);
 
 
 /*
@@ -81,6 +80,7 @@ string buildMessage(string s ="", bool allCaps = false);
  * true, convert s to all uppercase letters before concatenating it with "Message: ". If s is empty string, 
  * return "Message: empty".
  */
+ string buildMessage(string s ="", bool allCaps = false);
 
 
 /* for unit testing -- do not alter */

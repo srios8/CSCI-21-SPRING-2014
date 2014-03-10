@@ -15,25 +15,6 @@
 #include <stdio.h>
 using namespace std;
 
-string goldilocks (string item, int number);
-int rockScissorPaper (char playerOne, char playerTwo);
-int asciiValue (char c);
-string toLower (string input);
-string toUpper (string input);
-char getCharacter (string input, int charIndex);
-
-/* for unit testing -- do not alter */
-template <typename X, typename A>
-void btassert(A assertion);
-void unittest ();
-
-int main()
-//int main (int argc, char* argv[])
-{
-	unittest();
-	
-	return 0;
-}
 
 /*
  * Tell the story of Goldilocks. For example, 
@@ -57,6 +38,77 @@ int main()
  *        on invalid argument)
  * @return the output specified in the documentation above 
  */
+string goldilocks (string item, int number);
+
+
+/*
+ * Compute the outcome of a round of a rock-scissor-paper game. Lowercase or uppercase
+ * values for playerOne and playerTwo arguments are acceptable.
+ * Possible inputs: 'R' rock, 'S' scissor, 'P' paper
+ * <ul>
+ * <li>rocks beats scissors</li>
+ * <li>scissors beats paper</li>
+ * <li>paper beats rock</li>
+ * </ul>
+ * @param playerOne a char representing player one's "play" ('R', 'S', or 'P')
+ * @param playerTwo a char representing player two's "play" ('R', 'S', or 'P')
+ * @return 1 if player one wins, 2 if player two wins, 3 on a draw, and 0 if a winner
+ *           cannot be determined (which can happen if an invalid argument is passed in)
+ */
+int rockScissorPaper (char playerOne, char playerTwo);
+
+
+/*
+ * Return the ASCII integer value of a character.
+ * @param c the char
+ * @return an int containing the ASCII value of the character
+ */
+int asciiValue (char c);
+
+
+/*
+ * Return the input string with all characters converted to lowercase.
+ * @param input the string that will be converted to all lowercase characters.
+ * @return a string containing the input string, converted to all lowercase characters.
+ */
+string toLower (string input);
+
+
+/*
+ * Return the input string with all characters converted to uppercase.
+ * @param input the string that will be converted to all uppercase characters.
+ * @return a string containing the input string, converted to all uppercase characters.
+ */
+string toUpper (string input);
+
+
+/*
+ * Return the character from the input string at index charIndex. This function does 
+ * not check charIndex to ensure it is valid -- valid index must be ensured when 
+ * the function is invoked.
+ * @param input the string from which the character will be taken
+ * @param charIndex an integer containing the zero-indexed position of the character
+ *        to return
+ * @return a char containing the character from the input string at charIndex position
+ */
+char getCharacter (string input, int charIndex);
+
+
+
+/* for unit testing -- do not alter */
+template <typename X, typename A>
+void btassert(A assertion);
+void unittest ();
+
+int main()
+//int main (int argc, char* argv[])
+{
+	unittest();
+	
+	return 0;
+}
+
+
 string goldilocks (string item, int number)
 {
     string output;
@@ -103,20 +155,7 @@ string goldilocks (string item, int number)
 	}
 }
 
-/*
- * Compute the outcome of a round of a rock-scissor-paper game. Lowercase or uppercase
- * values for playerOne and playerTwo arguments are acceptable.
- * Possible inputs: 'R' rock, 'S' scissor, 'P' paper
- * <ul>
- * <li>rocks beats scissors</li>
- * <li>scissors beats paper</li>
- * <li>paper beats rock</li>
- * </ul>
- * @param playerOne a char representing player one's "play" ('R', 'S', or 'P')
- * @param playerTwo a char representing player two's "play" ('R', 'S', or 'P')
- * @return 1 if player one wins, 2 if player two wins, 3 on a draw, and 0 if a winner
- *           cannot be determined (which can happen if an invalid argument is passed in)
- */
+
 int rockScissorPaper (char playerOne, char playerTwo)
 {
     playerOne = toupper(playerOne);
@@ -140,21 +179,13 @@ int rockScissorPaper (char playerOne, char playerTwo)
     }
 }
 
-/*
- * Return the ASCII integer value of a character.
- * @param c the char
- * @return an int containing the ASCII value of the character
- */
+
 int asciiValue (char c)
 {
 	return static_cast<int>(c);
 }
 
-/*
- * Return the input string with all characters converted to lowercase.
- * @param input the string that will be converted to all lowercase characters.
- * @return a string containing the input string, converted to all lowercase characters.
- */
+
 string toLower (string input)
 {
     for(unsigned int i = 0; i < input.length(); i++)
@@ -164,11 +195,7 @@ string toLower (string input)
 	return input;
 }
 
-/*
- * Return the input string with all characters converted to uppercase.
- * @param input the string that will be converted to all uppercase characters.
- * @return a string containing the input string, converted to all uppercase characters.
- */
+
 string toUpper (string input)
 {
 	for(unsigned int i = 0; i < input.length(); i++)
@@ -178,15 +205,7 @@ string toUpper (string input)
 	return input;
 }
 
-/*
- * Return the character from the input string at index charIndex. This function does 
- * not check charIndex to ensure it is valid -- valid index must be ensured when 
- * the function is invoked.
- * @param input the string from which the character will be taken
- * @param charIndex an integer containing the zero-indexed position of the character
- *        to return
- * @return a char containing the character from the input string at charIndex position
- */
+
 char getCharacter (string input, int charIndex)
 {
     return input[charIndex];

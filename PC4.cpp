@@ -10,10 +10,64 @@
 #include <sstream>
 using namespace std;
 
+/*
+ * Return a string comprised of a label, followed by a space, 
+ * followed by a separator character, followed by a space, followed 
+ * by a floating-point value. For example, label="Temperature", value=41.7, 
+ * separator=':' will return "Temperature : 41.7". Uses stringstream.
+ * @param label the label for the value
+ * @param value a double containing the value associated with the label
+ * @param separator the character that will separate the label and the value
+ * @return a string comprised of a label, followed by a space, 
+ *         followed by a separator character, followed by a space, followed 
+ *         by a floating-point value
+ */
 string makeString (string label, double value, char separator);
+
+
+/*
+ * Useful when accepting input from stdin using the getline function.
+ * Return the first character of a length 1 string. If the value is of 
+ * length 0 or of length > 1, return the null character ('\0').
+ * @param value a string containing an expected single character
+ * @return the first character of the string or null character ('\0')
+ *         when value is length 0 or value is length > 1
+ */
 char stringToChar (string value);
+
+
+/*
+ * Useful when accepting input from stdin using the getline function.
+ * Convert a string containing an expected integer value (such 
+ * as a string captured from stdin) into an integer. If value is
+ * not valid as an integer, return 0.
+ * @param value a string containing an expected integer value
+ * @return an integer representing the value, or 0 on failure
+ */
 int stringToInt (string value);
+
+
+/*
+ * Useful when accepting input from stdin using the getline function.
+ * Convert a string containing an expected floating-point value (such 
+ * as a string captured from stdin) into a double. If value is
+ * not valid as an double, return 0.
+ * @param value a string containing an expected floating-point value
+ * @return an double representing the value, or 0 on failure
+ */
 double stringToDouble (string value);
+
+/*
+ * Useful when accepting input from stdin using the getline function.
+ * Convert a string containing an boolean value (such 
+ * as a string captured from stdin) into a bool. Return true if the first
+ * character is 'T' (case-insensitive), false if the first character is 'F'
+ * (case-insensitive), and false on anything else.
+ * @param value a string expected to start with either 'T' or 'F'
+ * @return an bool if the first character is 'T' (case-insensitive), false 
+ *         if the first character is 'F' (case-insensitive), and false on 
+ *         anything else.
+ */
 bool stringToBool (string value);
 
 /* helper functions -- do not alter */
@@ -40,18 +94,7 @@ int main()
 }
 
 
-/*
- * Return a string comprised of a label, followed by a space, 
- * followed by a separator character, followed by a space, followed 
- * by a floating-point value. For example, label="Temperature", value=41.7, 
- * separator=':' will return "Temperature : 41.7". Uses stringstream.
- * @param label the label for the value
- * @param value a double containing the value associated with the label
- * @param separator the character that will separate the label and the value
- * @return a string comprised of a label, followed by a space, 
- *         followed by a separator character, followed by a space, followed 
- *         by a floating-point value
- */
+
 string makeString (string label, double value, char separator)
 {
     stringstream ss;
@@ -60,14 +103,7 @@ string makeString (string label, double value, char separator)
     return ss.str();
 }
 
-/*
- * Useful when accepting input from stdin using the getline function.
- * Return the first character of a length 1 string. If the value is of 
- * length 0 or of length > 1, return the null character ('\0').
- * @param value a string containing an expected single character
- * @return the first character of the string or null character ('\0')
- *         when value is length 0 or value is length > 1
- */
+
 char stringToChar (string value)
 {
     
@@ -77,14 +113,7 @@ char stringToChar (string value)
     return '\0';
 }
 
-/*
- * Useful when accepting input from stdin using the getline function.
- * Convert a string containing an expected integer value (such 
- * as a string captured from stdin) into an integer. If value is
- * not valid as an integer, return 0.
- * @param value a string containing an expected integer value
- * @return an integer representing the value, or 0 on failure
- */
+
 int stringToInt (string value)
 {
 	// THIS FUNCTION PROVIDED AS AN EXAMPLE
@@ -101,14 +130,7 @@ int stringToInt (string value)
 	return ivalue;
 }
 
-/*
- * Useful when accepting input from stdin using the getline function.
- * Convert a string containing an expected floating-point value (such 
- * as a string captured from stdin) into a double. If value is
- * not valid as an double, return 0.
- * @param value a string containing an expected floating-point value
- * @return an double representing the value, or 0 on failure
- */
+
 double stringToDouble (string value)
 {
 	double ivalue = 0;
@@ -124,17 +146,7 @@ double stringToDouble (string value)
 	return ivalue;
 }
 
-/*
- * Useful when accepting input from stdin using the getline function.
- * Convert a string containing an boolean value (such 
- * as a string captured from stdin) into a bool. Return true if the first
- * character is 'T' (case-insensitive), false if the first character is 'F'
- * (case-insensitive), and false on anything else.
- * @param value a string expected to start with either 'T' or 'F'
- * @return an bool if the first character is 'T' (case-insensitive), false 
- *         if the first character is 'F' (case-insensitive), and false on 
- *         anything else.
- */
+
 bool stringToBool (string value)
 {
 	if(toupper(value[0] == 'T'))

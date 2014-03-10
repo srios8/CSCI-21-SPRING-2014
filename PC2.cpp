@@ -11,22 +11,6 @@
 #include <iostream>
 using namespace std;
 
-bool isFactor (int numerator, int denominator);
-void makeChange (int initialValue, int& quarters, int& dimes, int& nickels, int& pennies);
-double launchHumanCannonball (double initialVelocity, double launchAngle);
-
-/* for unit testing -- do not alter */
-template <typename X, typename A>
-void btassert(A assertion);
-void unittest ();
-
-int main()
-//int main (int argc, char* argv[])
-{
-	unittest();
-	
-	return 0;
-}
 
 /*
  * Determine if one integer is a factor (evenly divisible into)
@@ -38,19 +22,8 @@ int main()
  * @return true if the numerator is evenly divisible by the denominator (making the denominator
  *         a factor), else return false
  */
-bool isFactor (int numerator, int denominator)
-{
-    int n = numerator % denominator;
-    
-    if (n == 0) 
-    {
-        return true;
-    }
-    else 
-    {
-        return false;
-    }
-}
+bool isFactor (int numerator, int denominator);
+
 
 /*
  * Given an initial integer value (representing change to be given, such as in a financial
@@ -65,15 +38,8 @@ bool isFactor (int numerator, int denominator)
  * @param pennies the number of pennies that come out of the initial value, after quarters,
  *        dimes, and nickels have been taken out
  */
-void makeChange (int initialValue, int& quarters, int& dimes, int& nickels, int& pennies)
-{
-    quarters = initialValue/25;
-    int d = initialValue - quarters*25;
-    dimes = d/10;
-    int n = d - dimes*10;
-    nickels = n/5;
-    pennies = n - nickels*5;
-}
+void makeChange (int initialValue, int& quarters, int& dimes, int& nickels, int& pennies);
+
 
 /*
  * Computes the horizontal distance traveled by a human cannonball given an initial
@@ -86,6 +52,51 @@ void makeChange (int initialValue, int& quarters, int& dimes, int& nickels, int&
  * @return a double representing the horizontal distance the human cannonball will
  *         travel
  */
+double launchHumanCannonball (double initialVelocity, double launchAngle);
+
+
+
+
+/* for unit testing -- do not alter */
+template <typename X, typename A>
+void btassert(A assertion);
+void unittest ();
+
+int main()
+//int main (int argc, char* argv[])
+{
+	unittest();
+	
+	return 0;
+}
+
+
+bool isFactor (int numerator, int denominator)
+{
+    int n = numerator % denominator;
+    
+    if (n == 0) 
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}
+
+
+void makeChange (int initialValue, int& quarters, int& dimes, int& nickels, int& pennies)
+{
+    quarters = initialValue/25;
+    int d = initialValue - quarters*25;
+    dimes = d/10;
+    int n = d - dimes*10;
+    nickels = n/5;
+    pennies = n - nickels*5;
+}
+
+
 double launchHumanCannonball (double initialVelocity, double launchAngle)
 {
 	double PI = 3.14;

@@ -8,8 +8,8 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
-#include <map>
 #include <sstream>
+#include <map>
 #include <string>
 using namespace std;
 
@@ -57,7 +57,6 @@ void processArguments (int argc, char* argv[])
     int value = 0;
     for(int i = 1; i < argc; i++) 
     {
-        //argv[argc] = argv[i]
     	stringstream converter(argv[i]);
     	converter.exceptions(ios_base::failbit);
     
@@ -81,7 +80,7 @@ void processArguments (int argc, char* argv[])
                 onFifty();
             else
                 onError();
-        }
+    }
 }
 
 /*

@@ -22,7 +22,6 @@ class Prize
 		 * @param newValue unsigned int containing a value for this Prize; default argument is 0
 		 */
 		 Prize(string newName = "no name!", unsigned int newValue = 0);
-		 //Prize(string newName, unsigned int newValue);
 	
 		/*
 		 * Get this Prize's name
@@ -93,11 +92,12 @@ int main()
 	return 0;
 }
 
-//if newValue is > 100, converts name to all capital letters and concatenates a '!'
-//at the end of name
+
 Prize::Prize(string newName, unsigned int newValue)
+: name(newName), value(newValue){
+//Prize::Prize(string newName, unsigned int newValue)
 {
-    value = newValue;
+    //value = newValue;
     
     if(newValue > 100)
     {
@@ -107,7 +107,7 @@ Prize::Prize(string newName, unsigned int newValue)
     	}
     	newName += "!";
     }
-    name = newName;
+    //name = newName;
 }
 string Prize::getName() const
 {
