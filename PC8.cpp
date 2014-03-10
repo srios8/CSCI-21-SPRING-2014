@@ -66,6 +66,23 @@ void processArguments (int argc, char* argv[])
     	}
     	catch (ios_base::failure f) {}
     	
+//
+// Grader comments 2014.02.26
+//
+// Use indentation to make your code easier to read.
+// Specfically, indentation helps your reader to see
+// the hierarchy of your code at a glance. Your if/else
+// block here is subordinate only to the for() block,
+// so it should be indented to reflect that. As it stands,
+// your reader might mistake it as being part of the
+// catch block, especially considering that the catch
+// block itself closes on the same line. Also, especially
+// in complex functions, block closures are very important
+// and can lead to all kinds of problems if your reader
+// misinterprets them. So it's vitally important that your
+// closing brace be indented exactly as your opening
+// brace. See line 101. --Rob
+//
     	
         
             if(value == 10)
