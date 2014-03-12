@@ -195,6 +195,21 @@ PC11: PC11.cpp
 # Date completed: 03-10-2014
 PC12: PC12.cpp
 	g++ $(FLAGS) PC12.cpp -o PC12
+
+
+
+
+# Makefile for programming challenges
+#
+# CSCI 21, Spring 2014
+#
+# Programmer: Stacy A. Rios-Jimenez
+#
+
+# Target for programming challenge 13
+# Date completed: 03-12-2014
+PC13: PC13.cpp
+	g++ $(FLAGS) PC13.cpp -o PC13
 	
 	
 	
