@@ -102,6 +102,7 @@ int sum (int* theArray, unsigned int arraySize)
         return sum;
     }
 }
+
 int max (int* theArray, unsigned int arraySize)
 {
     int maxValue = 0;
@@ -117,6 +118,13 @@ int max (int* theArray, unsigned int arraySize)
             {
                 maxValue = theArray[i];
             }
+			//
+			// Grader comments 2012.03.13
+			//
+			// For min and max to work properly, you won't want
+			// this "else" block. If you're not updating your
+			// maxValue, then just do nothing.
+			//
             else
             {
                 maxValue = theArray[0];
