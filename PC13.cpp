@@ -89,6 +89,13 @@ string* makeDynoString (string contents)
 
 void clearDynoString (string*& theString)
 {
+	//
+	// Grader comments 2014.03.13
+	//
+	// This is the reason for your segmentation fault. It's not an array
+	// that we want to delete here, just an object. So we don't want "delete[]" --
+	// we just want "delete".
+	//
     delete[] theString;
     theString = NULL;
 }
@@ -178,6 +185,16 @@ bool replaceWord (string* theString, string oldWord, string newWord)
         }
         else
         {
+			//
+			// Grader comments 2014.03.13
+			//
+			// Note that oldWord and newWord are local variables. When
+			// you change them, you're changing only them and nothing else,
+			// not changing anything that the caller is holding. Also, what
+			// Boyd wanted was for you to find oldWord in theString and
+			// replace that part of theString with the string contained in
+			// newWord.
+			//
             oldWord = newWord;
             return true;
         }
