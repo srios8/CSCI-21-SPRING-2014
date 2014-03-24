@@ -172,13 +172,15 @@ bool replaceWord (string* theString, string oldWord, string newWord)
     else
     {
        size_t position = (*theString).find(oldWord);
+       size_t position2 = (*theString).find(newWord);
+       
         if(position == string::npos)
         {
             return false;
         }
         else
         {
-            oldWord = newWord;
+            oldWord = position2;
             return true;
         }
     }
