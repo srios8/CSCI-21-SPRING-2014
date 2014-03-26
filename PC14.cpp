@@ -76,15 +76,16 @@ void selectionSort (int theArray[], unsigned int size)
 {
     for(unsigned int i = 0; i < size; i++)
     {
-        unsigned int RHS = i;
-        for(unsigned int LHS = (i + 1); LHS <= (size - 1); LHS++)
+        unsigned int swapSource = i;
+        unsigned int swapTarget = i;
+        for(unsigned int j = (i + 1); j <= (size - 1); j++)
         {
-            if(theArray[LHS] < theArray[RHS])
+            if(theArray[j] < theArray[swapSource])
             {
-                RHS = LHS;
+                SwapSource = j;
             }
         }
-        swapValues(theArray, i, RHS);
+        swapValues(theArray, swapTarget, swapSource);
     }
 }
 
