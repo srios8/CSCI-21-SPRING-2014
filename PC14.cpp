@@ -82,7 +82,7 @@ void selectionSort (int theArray[], unsigned int size)
         {
             if(theArray[j] < theArray[swapSource])
             {
-                SwapSource = j;
+                swapSource = j;
             }
         }
         swapValues(theArray, swapTarget, swapSource);
