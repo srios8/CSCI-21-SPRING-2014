@@ -10,6 +10,10 @@ FLAGS = -Wall -Wextra -Werror -pedantic
 # Programmer: Stacy A. Rios-Jimenez
 #
 
+
+
+
+
 # Target for programming challenge 1
 # Date completed: 1-27-2014
 PC1: PC1.cpp
@@ -18,12 +22,6 @@ PC1: PC1.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 2
 # Date completed: 1-29-2014
@@ -33,12 +31,6 @@ PC2: PC2.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 3
 # Date completed: 2-3-2014
@@ -49,12 +41,6 @@ PC3: PC3.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 4
 # Date completed: 2-5-2014
@@ -64,12 +50,6 @@ PC4: PC4.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 5
 # Date completed: 2-10-2014
@@ -79,12 +59,6 @@ PC5: PC5.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 6
 # Date completed: 2-19-2014
@@ -94,12 +68,6 @@ PC6: PC6.cpp
 	
 	
 	
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 7
 # Date completed: 2-19-2014
@@ -109,12 +77,6 @@ PC7: PC7.cpp
 	
 	
 	
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming project 1
 # Date completed: 2-21-2014
@@ -124,12 +86,6 @@ Project1: Project1.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 8
 # Date completed: 2-24-2014
@@ -139,12 +95,6 @@ PC8: PC8.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 9
 # Date completed: 2-26-2014
@@ -154,12 +104,6 @@ PC9: PC9.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 10
 # Date completed: 03-03-2014
@@ -169,12 +113,6 @@ PC10: PC10.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 11
 # Date completed: 03-05-2014
@@ -184,12 +122,6 @@ PC11: PC11.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 12
 # Date completed: 03-10-2014
@@ -199,12 +131,6 @@ PC12: PC12.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 13
 # Date completed: 03-12-2014
@@ -214,12 +140,6 @@ PC13: PC13.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 14
 # Date completed: 03-24-2014
@@ -230,14 +150,18 @@ PC14: PC14.cpp
 
 
 
-# Makefile for programming challenges
-#
-# CSCI 21, Spring 2014
-#
-# Programmer: Stacy A. Rios-Jimenez
-#
 
 # Target for programming challenge 15
 # Date completed: 03-31-2014
 PC15: PC15.cpp
 	g++ $(FLAGS) PC15.cpp -o PC15
+	
+
+
+
+
+
+# Target for programming challenge 16
+# Date completed: 04-2-2014
+PC16: PC16.cpp
+	g++ $(FLAGS) PC16.cpp -o PC16
