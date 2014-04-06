@@ -64,19 +64,19 @@ PC5: PC5.cpp
 # Date completed: 2-19-2014
 PC6: PC6.cpp
 	g++ $(FLAGS) PC6.cpp -o PC6
-	
-	
-	
-	
+
+
+
+
 
 # Target for programming challenge 7
 # Date completed: 2-19-2014
 PC7: PC7.cpp
 	g++ $(FLAGS) PC7.cpp -o PC7
-	
-	
-	
-	
+
+
+
+
 
 # Target for programming project 1
 # Date completed: 2-21-2014
@@ -145,7 +145,7 @@ PC13: PC13.cpp
 # Date completed: 03-24-2014
 PC14: PC14.cpp
 	g++ $(FLAGS) PC14.cpp -o PC14
-	
+
 
 
 
@@ -155,7 +155,7 @@ PC14: PC14.cpp
 # Date completed: 03-31-2014
 PC15: PC15.cpp
 	g++ $(FLAGS) PC15.cpp -o PC15
-	
+
 
 
 
