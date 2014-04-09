@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wextra -Werror -pedantic
+FLAGS = -Wall -Wextra -Werror -Wno-newline-eof -pedantic
 
 
 

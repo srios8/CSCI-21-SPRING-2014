@@ -40,7 +40,7 @@ string Prize::getPrizeName() const
     
 void Prize::setPrizeValue(unsigned int newPrizeValue)
 {
-    prizeValue = newPriceValue;
+    prizeValue = newPrizeValue;
 }
 
 

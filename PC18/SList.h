@@ -1,15 +1,26 @@
-class SLNode
+#pragma once
+
+#include "SLNode.h"
+#include <iostream>
+
+#include <cstdlib>
+#include<sstream>
+using namespace std;
+
+
+
+class SList
 {
     public:
     /*
      * default constructor, sets values head(NULL) and size(0)
      */
-        SLNode();
+        SList();
         
     /*
      * destructor, calls the clear function
      */
-        ~SLNode();
+        ~SList();
         
     /*
      * create a new SLNode and attach as head of list

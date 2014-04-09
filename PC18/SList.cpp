@@ -1,26 +1,61 @@
-SLNode::SLNode()
+#include "SList.h"
+#include "SLNode.h"
+
+
+SList::SList()
+: head(NULL), size(0)
+{}
+
+SList::~SList()
 {
-    
+    clear();
 }
-SLNode::~SLNode()
+
+void SList::insertHead(int size)
 {
-    
+    SLNode* nodie = new SLNode();
+    nodie->setNextNode(head);
+    head = nodie;
+    size++;
 }
-void SLNode::insertHead(int size)
+
+void SList::removeHead()
 {
-    
+    if(head!=NULL)
+    {
+        SLNode* temp = head;
+        head = head->getNextNode();
+        delete temp;
+        size--;
+    }
 }
-void SLNode::removeHead()
+void SList::clear()
 {
-    
+    while(head!=NULL)
+    {
+        removeHead();
+    }
 }
-unsigned int SLNode::getSize() const
+
+unsigned int SList::getSize() const
 {
     return size;
 }
-string SLNode::toString() const
+
+string SList::toString() const
 {
-    return string;
+    stringstream ss;
+    
+    for(SLNode* i = head; i!=NULL; i-> getNextNode())
+    {
+        ss << i->getContents();
+        if(i->getNextNode()!=NULL)
+        {
+            ss << ',';
+        }
+    }
+    
+    return ss.str();
 }
-	
-	
+        
+
