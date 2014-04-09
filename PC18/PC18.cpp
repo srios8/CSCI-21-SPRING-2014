@@ -4,7 +4,7 @@
  * April 9th, 2014
  */
 
-#include "SList.cpp"
+#include "SList.h"
 
 #include <cassert>
 #include <cstdlib>
@@ -20,6 +20,20 @@ void unittest ();
 int main()
 {
 	unittest();
+	
+	SList();
+    
+    void insertHead();
+        
+    void removeHead();
+        
+    void clear();
+    
+    SLNode(); 
+	
+    void setContents ();
+    
+    void setNextNode ();
 	
 	return 0;
 }
