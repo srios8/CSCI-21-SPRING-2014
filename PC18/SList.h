@@ -1,8 +1,12 @@
 #pragma once
 
-#include <string>
+#include "SLNode.h"
 #include <iostream>
+
+#include <cstdlib>
+#include<sstream>
 using namespace std;
+
 
 
 class SList

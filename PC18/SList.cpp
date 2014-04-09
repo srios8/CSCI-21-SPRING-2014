@@ -46,7 +46,7 @@ string SList::toString() const
 {
     stringstream ss;
     
-    for(SLNode* i = head; i!=NULL; i = 1->getNextNode())
+    for(SLNode* i = head; i!=NULL; i-> getNextNode())
     {
         ss << i->getContents();
         if(i->getNextNode()!=NULL)
