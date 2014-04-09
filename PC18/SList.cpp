@@ -3,7 +3,7 @@
 
 
 SList::SList()
-:head(NULL), size(0)
+: head(NULL), size(0)
 {}
 
 SList::~SList()
@@ -13,7 +13,7 @@ SList::~SList()
 
 void SList::insertHead(int size)
 {
-    SLNode* nodie = new SLNode(value);
+    SLNode* nodie = new SLNode();
     nodie->setNextNode(head);
     head = nodie;
     size++;
@@ -21,12 +21,12 @@ void SList::insertHead(int size)
 
 void SList::removeHead()
 {
-    if(head!=NUll)
+    if(head!=NULL)
     {
         SLNode* temp = head;
         head = head->getNextNode();
         delete temp;
-        numNodes--;
+        size--;
     }
 }
 void SList::clear()

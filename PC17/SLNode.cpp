@@ -9,27 +9,27 @@ SLNode::SLNode(int newContents)
 : nextNode(NULL), contents(newContents)
 {}
 
-~SLNode()
+SLNode::~SLNode()
 {
     nextNode = NULL;
 }
 
-void setContents (int newContents)
+void SLNode::setContents (int newContents)
 {
     contents = newContents;
 }
 
-int getContents () const
+int SLNode::getContents () const
 {
-    return Contents;
+    return contents;
 }
 
-void setNextNode (SLNode* newNextMode)
+void SLNode::setNextNode (SLNode* newNextMode)
 {
     nextNode = newNextMode;
 }
 	
-SLNode* getNextNode () const
+SLNode* SLNode::getNextNode () const
 {
-    return newNextMode;
+    return nextNode;
 }
