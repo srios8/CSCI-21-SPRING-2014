@@ -1,5 +1,4 @@
-FLAGS = -Wall -Wextra -Werror -Pedantic        
-  
+FLAGS = -Wall -Wextra -Werror -Wno-newline-eof -pedantic  
 Project2: Prize.o Box.o Project2.o
     g++ -c $(FLAGS) Prize.o Box.o Project2.o -o Project2
   

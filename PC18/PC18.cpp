@@ -1,8 +1,10 @@
 /*
  * Programming Challenge 18 - UNIT TEST
+ * Stacy A. Rios
+ * April 9th, 2014
  */
 
-//#include "SList.h"
+#include "SList.cpp"
 
 #include <cassert>
 #include <cstdlib>
