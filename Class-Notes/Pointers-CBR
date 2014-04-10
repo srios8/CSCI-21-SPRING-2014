@@ -1,0 +1,159 @@
+/*
+ *Calling by reference/pointers
+ *March 12th, 2013
+ */
+           
+           *                            &
+     multiplication              pass by reference
+declare pointer variable            address of
+  dereference pointer
+  
+-------------------------------------------------------------------------------------------------  
+EXAMPLES
+
+  int* var = new int;       ||      int*var = new int[5];
+  cout << *var;
+  void f1(int* i);                  
+                                    f1(var);
+                                    
+    int* var = new int[5];
+    f1(var);
+    
+    void f1(int* i){        ||      void f1(int*& i)   ------>   memory leaked var/i NULL
+    i[0] = 42;
+    i = null;
+    }
+-------------------------------------------------------------------------------------------------
+string* stringy = NULL;                     void makeString(string* ps){
+                                                ps = new string("shoe");
+makeString(stringy);                        }
+cout<< *stringy    
+
+***leaked***
+--------------------------------------------------------------------------------------------------
+string* stringy = NULL;                     void makeString(string*& ps){
+                                                ps = new string("shoe");
+makeString(stringy);                        }
+cout<< *stringy    
+--------------------------------------------------------------------------------------------------
+string* stringy = NULL;                     cout << (*stringy).length();
+makeString(stringy);                        cout << (*stringy)[0];
+cout << *stringy;                           cout << (*stringy).at(0);
+                                            ============================== OR
+                                            cout << stringy->length();
+                                            cout << (*stringy)[0];
+                                            cout << stringy ->at(0)
+delete stringy;
+stringy = NULL;
+////////////////////////////////////////////////////////////////////////////////////////////////////
+----------------------------------------------------------------------------------------------------
+***Footwear.h***
+#pragma
+
+include <string>
+using namespace std;
+
+class Footwear
+{
+    public:
+        Footwear();
+        Footwear(string newName);
+        
+        void setName(string newName);
+        string getName() const;
+    
+    private:
+        string name;
+};
+-----------------------------------------------------------------------------------------------------
+***Footwear.cpp***
+#include "Footwear.h"
+
+Footwear::Footwear()
+: name ("shoes")
+{}
+
+Footwear::Footwear(string newName)
+: name(newName)
+{}
+
+void Footwear::setName(string newName)
+{
+    if(newName != crocs)
+        name = newName;
+}
+string Footwear:: getName() const
+{
+    return name;
+}
+--------------------------------------------------------------------------------------------------
+***Footwear-test.cpp***
+#include "Footwear.h"
+
+#include <iostream>
+using namespace std;
+
+void makeFootwear(Footwear*& pf);
+
+int main()
+{
+    Footwear f1; // f1 is static
+    cout << f1.getName() << endl;
+    
+    //f2 is dynamic
+    Footwear* f2 = new Footwear("sandals");
+    
+    cout << f2->getName() << endl;
+    //OR cout << (*f2).getName() << endl;
+    
+    //cout << "HELLO\n";     ------------> debugging segmentation faults
+    
+    delete f2;
+    f2 = NULL;
+    
+    makeFootwear(f2);
+    
+    cout << f2->getName() << endl;
+    f2->setName("crocs");
+    cout << f2->getName() << endl;
+    
+    delete f2;
+    f2 = NULL;
+    
+    return 0;
+}
+
+void makeFootwear(Footwear*& pf)
+{
+    pf = new Footwear("boots");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+/* 
+ * February 26th, 2014
+ *
+ * Objectives: 
+ * OOP -> "model" classes
+ * Compiler/Makefile
+ * Implement a class INSIDE the driver
+ * Implement a class OUTSIDE the driver
+ */ 
+ 
+ string
+ -characters
+ -how many characters
+ -(=) to input data in string
+ 
+ string    s1 ;
+|______|  |__|
+    ^       ^
+    |       |
+  class   object
+         instance
+         
+///////////////////////////////////////////INSIDE DRIVER/////////////////////////////////////////////////
+         
+#include <iostream>;
+using namespace std;
+
+//Car class declaration
+
+class Car
+{
+    public:
+        unsigned int getYear () const;      // accessor/getter for year
+        void setYear(unsigned int newYear); // mutator/setter for year
+        
+        string getColor() const;
+        void setColor(string newColor);
+        
+    private:
+        unsigned int year;
+        string color;
+};
+
+//Driver
+
+int main()
+{
+    Car camaro;
+    camaro.setYear(1967);
+    //camaro.year = 1969;  <-----------------  doesnt work because it's private! 
+    cout << camaro.getYear() << endl;
+    camaro.setYear(0);                     //  ignored; less than 1887
+    cout << camaro.getYear() << endl;
+    
+    camaro.setColor("Pearlescent White")
+    cout << camaro.getColor() << endl;
+    
+    Car tesla;
+    prius.setYear(2014);
+    tesla.setColor("Black")
+    cout << "Year:\t' << tesla.getYear() << endl;
+    cout << "Color :\t" <<tesla.getColor() << endl;
+    
+    return 0;
+}
+
+//Car class implementation
+
+unsigned int Car::getYear() const
+{
+    return year;
+}
+
+void Car::setYear (unsigned int newYear)
+{
+    if(newYear >= 1887)
+    year = newYear;
+}
+
+string Car:: getColor () const
+{
+    return color;
+}
+
+void Car:setColor (string newColor)
+{
+    color = newColor;
+}
+
+///////////////////////////////OUTSIDE DRIVER/////////////////////////////////////////////////////////////////////////////////////
+*Saved as Donut. h*                     |*Saved as Donut.cpp*                  |*Saved as donut-shop.cpp*
+                                        |                                      |
+                                        |                                      |#include "Donut.h"
+#pragma once                            |  #include "Donut.h"                  |#include <iostream>
+#include <string>                       |                                      |using namespace std;
+using namespace std;                    |  string Donut::getName() const;      |
+                                        |   {                                  |int main()
+class Donut                             |      return name;                    |{
+{                                       |   }                                  |    Donut d1;
+    public:                             |                                      |    d1.setName("Maple Bar");
+        string getName() const;         |  void Donut::setName(string newName) |    cout << "Mmmm...." << d1.getName() << endl;
+        void setName (string newName)   |   {                                  |    return 0;
+                                        |       name = newName                 |}
+    private:                            |   }                                  |
+        string name;                    |                                      |
+};                                      |                                      |
+____________________________________________________________________________________________________________________________________
+Makefile
+
+FLAGS = -Wall -Wextra -Werror -pendantic
+
+donut-shop: donut-shop.cpp Donut.o
+    g++ $(FLAGS) donut-shop.cpp Donut.o -o donut-shop
+    
+Donut.o:Donut.cpp Donut.h
+    g++ $(FLAGS) -c Donut.cpp -o Donut.o
+    
+///////////////////////////////////////////////////////////////////////////////////////////

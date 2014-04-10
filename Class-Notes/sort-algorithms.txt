@@ -1,0 +1,52 @@
+// PSEUDOCODE FOR OPTIMIZED BUBBLE SORT
+//
+procedure bubbleSort( A : list of sortable items )
+	n = length(A)
+	repeat
+		swapped = false
+		for i = 1 to n-1 inclusive do
+			if A[i-1] > A[i] then
+				swap(A[i-1], A[i])
+				swapped = true
+			end if
+		end for
+		n = n - 1
+	until not swapped
+end procedure
+
+// PSEUDOCODE FOR SELECTION SORT
+//
+For I = 0 to N-1 do:
+	Smallsub = I
+	For J = I + 1 to N-1 do:
+		If A(J) < A(Smallsub)
+			Smallsub = J
+		End-If
+	End-For
+	swap(A(I), A(Smallsub))
+End-For
+
+// PSEUDOCODE FOR INSERTION SORT
+//
+For I = 0 to N - 1
+	J = I
+	Do while (J > 0) and (A(J) < A(J - 1)
+		swap(A(J), A(J-1))
+		J = J - 1 
+	End-Do
+End-For
+
+// PSEUDOCODE FOR SHELL SORT
+//
+gap = size / 2
+while gap > 0
+	for i = gap to size - 1
+		temp = a[i]
+		j = i
+		while j >= gap and a[j − gap] > temp
+			a[j] = a[j − gap]
+			j = j − gap
+		a[j] = temp
+	end for
+	gap = gap / 2
+end while

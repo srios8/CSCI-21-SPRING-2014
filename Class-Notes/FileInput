@@ -1,0 +1,62 @@
+ // * The easy way one character at a time one line at a time "sets" of lines *
+ 
+ // c++ files are streams
+ 
+ // << (insertion/write)
+ // >> (extract/read)
+ 
+ #include <fstream>
+ #include<iostream>
+ using  namespace std;
+ 
+ // ifstream -- input/read
+ // ofstream -- output/write
+ 
+ // for any file(input or output)
+ // 1. attempt to open the file
+ // 2. check to be sure it opened error-free
+ // 3. do the desired operations
+ // 4. close file
+ 
+ int main()
+ {
+    ifstream filein("test.txt");
+    if(filein.good() == true)
+    {
+        cout << "Ready to read input from test.txt." << endl;
+        string nextline;
+        while(filein >> nextline)//the "easy" way
+        {
+            cout << "read-> " << nextline << endl;
+        }
+    }
+    else 
+    {
+        cout << "Unable yo open test.txt for input." << endl;
+    }
+    return 0;
+ }
+ 
+ 
+ 
+ int main()
+ {
+    ifstream filein("test.txt");
+    if(filein.good() == true)
+    {
+        cout << "Ready to read input from test.txt." << endl;
+        string nextName;
+        int nextPrice;
+        while(!filein.eof())//the "easy" way
+        {
+        filein>>nextName
+        filein>>nextPrice;
+            cout << "product-> " << nextName << " $"<<nextPrice<<endl;
+        }
+    }
+    else 
+    {
+        cout << "Unable yo open test.txt for input." << endl;
+    }
+    return 0;
+ }

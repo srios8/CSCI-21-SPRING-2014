@@ -1,0 +1,44 @@
+  /*
+   * March 3rd, 2014
+   */
+   
+   
+  *Project 2 Set Up*
+  
+  (6 files)
+  (Make folder for project 2)
+  (Project 2 should have its own makefile)
+  
+  ----------------------------------------------------------------------------------------------------------------------------
+  *Prize.h*             |*Prize.cpp*            |*Box.cpp*              |*Box.h*                |*Project-2*
+  #pragma once          |#include "Prize.h"     |#include "Box.h"       |#pragma once           |#include "Prize.h"
+                        |                       |                       |                       |#include "Box.h"
+  int main              |                       |                       |{                      |
+  {                     |                       |                       |                       |int main()  
+                        |                       |                       |};                     |{   
+  };                    |                       |                       |                       |   Prize p;
+                        |                       |                       |                       |   Box b;
+                        |                       |                       |                       |   return 0;
+                        |                       |                       |                       |}
+  -------------------------------------------------------------------------------------------------------------------------------
+  *Makefile*
+  
+  FLAGS = -Wall -Wextra -Werror -Pedantic        //(1)
+  
+  project-2: Prize.o Box.o project-2.o
+    g++ -c$(FLAGS) Prize.o Box.o project-2.o -o project-2
+  
+  Project-2.o: project-2.cpp
+    g++ -c $(FLAGS) project-2.cpp -o project-2.o
+  
+  Box.o: Box.h Box.cpp
+    g++ -c $(FLAGS) Box.cpp -o Box.o
+  
+  Prize.o:Prize.h Prize.cpp
+    g++ -c $(FLAGS) Prize.cpp -o Prize.o
+    
+  clean:                                         //(3)
+    rm -f *.o
+    
+  cleanall: clean
+    rm -f project-2

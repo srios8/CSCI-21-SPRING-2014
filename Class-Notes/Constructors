@@ -1,0 +1,184 @@
+/*
+ * Constructors
+ * sets/gets
+ * March 5th, 2014
+ */
+ 
+_________________________________________________________________________________________________________________________________________
+*Animal.h*                                  
+                                            
+ #pragma once                               
+                                            
+ #include <iostream>
+ #include<string>                           
+ using namespace std;                       
+                                            
+ class Animal                               
+ {                                          
+    public:  
+        Animal();
+        Animal(string newName, string newSound);                  --------->    Overloaded constructor
+        
+        //void Animal();                                          --------->    this is wrong, but it's right as far as the compiler is concerned
+        
+        void setName(string newName);       
+        void setSound(string newSound);      
+                                            
+        string getSound() const;            
+        string getSound() const;            
+                                            
+    private:                                
+        string name;                        
+        string sound;                       
+ };                                         
+_________________________________________________________________________________________________________________________________________
+*farm.cpp*(driver)
+
+#include "Animal.h"
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    Animal fox;
+    for.setName("Fanny");
+    fox.setSound("yiff");
+    cout << fox.getName() << " goes" << fox.getSound() << "\"\n";
+    
+    Animal pig("Wilber","oink");                        ------------------->    calling overload
+    cout << pig.getName() << " goes" << pig.getSound() << "\"\n";
+    
+    return 0;
+}
+_________________________________________________________________________________________________________________________________________
+*Animal.cpp*
+
+#include "Animal.h"
+
+Animal::Animal()                                  --------------------------->  Default Constructor
+{
+    cout << "Animal::Animal\n";
+    name = "Alfie";
+    sound = "woof";
+}
+Animal(string newName, string newSound)
+{
+    cout << "Animal::Animal(string,string)\n"
+    
+    name = newName;
+    sound = newSound;
+}
+void Animal::setName (string newName)
+{
+    name = newName;
+}
+void Animal::setSound (string newSound)
+{
+    sound = newSound;
+}
+string Animal::getName() const
+{
+    return name;
+}
+string Animal::getSound() const
+{
+    return sound;
+}
+_________________________________________________________________________________________________________________________________________
+*Makefile*
+
+FLAGS = -Wall -Wextra -Werror -pedantic
+
+farm:farm.o Animal.o Field.o
+    g++ $(FLAGS) farm.o Animal.o Field.o -o farm
+
+farm.o: farm.cpp
+    g++ -c $(FLAGS) farm.cpp -o farm.o
+    
+Field.o:Field.h Field.cpp
+    g++ -c $(FLAGS) Field.cpp -o Field.o
+
+Animal.o: Animal.h Animal.cpp
+    g++ -c $(FLAGS) Animal.cpp -o Animal.o
+    
+clean:
+    rm -f farm
+_________________________________________________________________________________________________________________________________________
+Constructors
+-functions:used to initialize instances/objects
+-same name for class
+-no return value
+-can be overloaded(just like any other functions)
+-used to control initialization of data members
+=========================================================================================================================================
+*Field.h*
+#pragma once
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Field
+{
+    public:
+        Field(string newCrop = "hemp", unsigned int newMonths = 1, float newAcres = 1.0f);                        ---------> Constructor
+        
+        friend ostream& operator<< (ostream& outs, Field& aField);
+        
+    private:
+        string crop;
+        unsigned int monthsUntilHarvest;
+        float acres;
+};
+_________________________________________________________________________________________________________________________________________
+*farm.cpp*(driver)
+
+#include "Animal.h"
+#include "Field.h"
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    Field fieldOne;//"hemp", 1 mo., 1.0 acres
+    Field fieldTwo(corn);//"corn", 1 mo., 1.o acres
+    Field fieldThree("wheat", 6);//"wheat", 6 mos., 1.0 acres
+    Field fieldFour("sorghum", 8, 640.0f);//"sorghum", 8 mos., 640.0 acres
+    
+    cout << fieldOne << endl << endl;
+    cout << fieldTwo << endl << endl;
+    cout << fieldThree << endl << endl;
+    cout << fieldFour << endl << endl;
+    
+    // Animal fox;
+    //for.setName("Fanny");
+    //fox.setSound("yiff");
+    //cout << fox.getName() << " goes" << fox.getSound() << "\"\n";
+    
+    //Animal pig("Wilber","oink");                        
+    //cout << pig.getName() << " goes" << pig.getSound() << "\"\n";
+    
+    return 0;
+}
+_________________________________________________________________________________________________________________________________________
+*Field.cpp*
+
+#include "Field.h"
+
+Field::Field(string newCrop, unsigned int newMonths, float newAcres)
+{
+    crop = newCrop;
+    monthsUntilHarvest = newMonths;
+    acres = newAcres;
+}
+
+ostream& operator<< (ostream& outs, Field& aField)
+{
+    outs << "A" << aField.crop << " field of "";
+    outs << aField.acres << " acre(s). \nReady for harvest in ";
+    outs << aField.monthsUntilHarvest << " month(s).";
+    
+    return outs;
+}

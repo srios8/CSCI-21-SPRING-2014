@@ -1,0 +1,60 @@
+argc/argv
+
+ALL THREE ARE THE SAME
+
+int main(int argc, char** argv)
+int main(int argc, char* argv[]) ----> array(argv[]) of character arrays(char* - string)
+int main()
+
+
+
+int main(int argc, char** argv)
+{
+    //./programName executes name
+    itn sum = 0;
+    int number = 0;
+    cout << "argc = " << argc << endl;
+    
+    for(int i = 0; i <argc;i++)
+    {
+        stringstream nextint(argv[i]);
+        cout << "argv[" << i << "] = " << argv[i] << endl;
+        sum+= number;
+        }
+        cout << "sum = " << endl;
+        
+        /*
+        if(argc == 2)
+        {
+            cout << "opening " << argv[1] << " for processing." << endl;
+        }*/
+
+    return 0;
+}
+
+
+char*(C language) => string (C++ language)
+
+
+int main(int argc, char** argv)
+{
+    string fileName = "datafile.txt";
+    
+    const char* cstring = fileName.c_str();
+    
+    return 0;
+}
+
+
+
+unsigned integers
+
+unsigned int i = 1;
+int j = 2;
+
+string s = "hello";
+for(unsigned int i = 0; i < s.length();i++)
+                        --------------
+                         ^ ^ ^ ^ ^ ^ ^
+                         | | | | | | |    
+                            unsigned
