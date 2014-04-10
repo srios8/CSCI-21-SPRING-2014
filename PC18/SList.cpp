@@ -42,7 +42,7 @@ unsigned int SList::getSize() const
     return size;
 }
 
-string SList::toString()
+string SList::toString() const
 {
     stringstream ss;
     

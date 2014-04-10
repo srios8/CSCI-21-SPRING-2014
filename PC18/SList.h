@@ -45,7 +45,7 @@ class SList
      * return a string representation of the contents of all nodes in the list, 
      * in the format NUM1,NUM2,...,LASTNUM; return empty string on empty list
 	*/
-        string toString();
+        string toString () const;
     
     private: 
         /*
