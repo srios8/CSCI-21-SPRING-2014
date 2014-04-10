@@ -4,7 +4,7 @@
  * April 7th, 2014
  */
 
-#include "SLNode.cpp"
+#include "SLNode.h"
 
 #include <cassert>
 #include <cstdlib>
