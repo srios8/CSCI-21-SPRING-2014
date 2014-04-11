@@ -1,0 +1,135 @@
+/*
+ *Constructors--initializer list
+ *Pointers--dynamic arrays
+ */
+ 
+ class Thing
+ {
+    public:
+        void Thing();     ------------------------------>    Default Constructor
+        Thing(string newName);     --------------------->    Overloaded Constructor
+    
+    private:
+        string name;
+        
+        
+ };
+ -----------------------
+ To use constructors:  |
+                       |
+ Thing t1;             |
+ Thing t2("Raindrop"); |
+ -----------------------
+ 
+ Thing::Thing()
+ {
+    name = "Thing";
+ }
+ Thing::Thing(string newName)
+ {
+    name = newName;
+ }
+ -----------------------------
+ *Initializer list*          |
+                             |
+ Thing::Thing()              |
+ :name("Thing"){}            |
+                             |
+ Thing::Thing(string newName)|
+ :name(newName){}            |
+ -----------------------------
+ ==============================================================================================================================================
+ **Pointer Basics**
+ 
+ int number = 0;
+ // int is a data type
+ // int is for integers
+ 
+ int* numberPointer = NULL;
+ // int* is a different data type from int
+ // int* memory addresses of an integer
+ 
+ declaring a pointer variable       --DATATYPE
+ address of a "normal" variable     --&VARIABLE
+ dereferencing a pointer variable   --*POINTER_VARIABLE
+ 
+ -------------------------------------------------------------------------------
+ *Pointers.cpp*
+ 
+ #include <iostream>
+ using namespace std;
+ 
+ int main()
+ {
+    int x = 99;
+    
+    int* pX = NULL;
+    
+    pX = &x; //address of x
+    
+    if(pX==NULL)
+    {
+        cout << "pX is currently unused" << endl;
+    }
+    else
+    {
+        cout << "pX points to address ->" << pX << "(" << &x << ")" <<endl;
+        
+        cout << "the integer at address " << pX << "is  << *pX << endl;
+        
+        *pX = 42;
+        cout << "x is " << x << endl;
+        
+        pX = NULL;
+    }
+    
+    return 0;
+ }
+ ///////////////////////////////////////////////////////////////////////////////////////////
+ Pointers -- (de)allocating memory on the fly
+ 
+ new
+ delete
+ 
+ "manual memory management"
+ ----------------------------------------------------------------------------------
+ *pointers2.cpp*
+ 
+ 
+ #include <iostream>
+ using namespace std;
+ 
+ int main()
+ {
+    //static string array
+    //system allocators and dellocates for us
+    //string eightball[3] = {"Yes", "No", "maybe"};
+    
+    string* customAnswers = NULL;
+    unsigned int numberOfCustomAnswers = 0;
+    
+    cout << "How many custom answers?";
+    cin >> numberOfCustomAnswers;
+    customAnswers = new string[numberOfCustomAnswers];
+    
+    cin.ignore(256, '\n');
+    
+    for(unsigned int i=0; i < numberOfCustomAnswers ; i++)
+    {
+        cout << "Enter answer # "  << (i+1) << ": ";
+        getline(cin, customAnswers[i]);
+    }
+    
+    for(unsigned int i=0; i < numberOfCustomAnswers ; i++)
+    {
+        cout << customAnswers[i] << '';
+        cout << endl;
+    }
+    
+    delete[] customAnswers;
+    customAnswers = NULL;
+    
+    return 0;
+    
+ }
+ 

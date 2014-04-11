@@ -21,20 +21,6 @@ int main()
 {
 	unittest();
 	
-	SList();
-    
-    void insertHead();
-        
-    void removeHead();
-        
-    void clear();
-    
-    SLNode(); 
-	
-    void setContents ();
-    
-    void setNextNode ();
-	
 	return 0;
 }
 

@@ -1,0 +1,34 @@
+ /* 
+  * March 3rd, 2014
+  */
+  
+  "Model" Class
+  
+  private properties
+  --------
+    |   |
+    |    ->data members
+    ->access modifier
+    
+    public functions
+    ------
+       |
+        ->member functions
+  
+    private "helper" functions
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ *Programmer*                                   |*Public member*
+                                                |
+  class Donut                                   |int main(){
+  {                                             |   Donut d;
+    public:                                     |   //d.name = "Okra";             -----> can not be accessed by public
+        string getName() const;                 |   //d.upperName("jelly");        -----> can not be accessed by public
+        void setName(string newName);           |   d.setName("glazed");
+                                                |   cout << d.getName() << endl;
+    private:                                    |}
+        string name;                            |
+        string upperName(string);               |
+  };                                            |
+  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -11,9 +11,9 @@ SList::~SList()
     clear();
 }
 
-void SList::insertHead(int size)
+void SList::insertHead(int newSize)
 {
-    SLNode* nodie = new SLNode();
+    SLNode* nodie = new SLNode(newSize);
     nodie->setNextNode(head);
     head = nodie;
     size++;
@@ -46,7 +46,7 @@ string SList::toString() const
 {
     stringstream ss;
     
-    for(SLNode* i = head; i!=NULL; i-> getNextNode())
+    for(SLNode* i = head; i!=NULL; i = i-> getNextNode())
     {
         ss << i->getContents();
         if(i->getNextNode()!=NULL)
@@ -57,5 +57,3 @@ string SList::toString() const
     
     return ss.str();
 }
-        
-

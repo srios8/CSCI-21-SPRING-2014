@@ -1,0 +1,154 @@
+insert head
+
+SLNode* aNode = new SLNode(42);
+head = aNode;
+aNode = new SLNode(99);
+aNode->setNext(head);    or (*aNode).setNext(head);
+head = aNode;
+
+
+
+single linked list
+
+1 sentinel : "head"
+SLNode* head = NULL;
+
+
+
+remove head
+
+SLNode* temp = head;
+head = head->setNext();
+delete temp;
+
+================================================================================
+*LList.h*
+#pragma once
+
+#include "SLNode.h"
+#include <iostream>
+
+#include <cstdlib>
+#include<sstream>
+using namespace std;
+
+class SLList
+{
+    public:
+        SLList();
+        virtual~SLList();
+        
+        void insertHead(int value);
+        void removeHead();
+        
+        void clear();
+        
+        unsigned int getSize() const;
+        
+        string toString();
+        
+    private:
+        SLNode* head;
+        unsigned int numNodes;
+};
+================================================================================
+*SLList.cpp*
+
+#include "SLNode.h"
+
+SLList::SLList()
+: head(NULL), numNodes(0)
+{}
+
+SLList::~SLList()
+{
+    //cout << "SLList::~SLList" << endl;
+    clear();
+}
+    
+void SLList::insertHead(int value)
+{
+    SLNode* nodie = new SLNode(value);
+    nodie->setNextNode(head);
+    head = nodie;
+    numNodes++;
+}
+void SLList::removeHead()
+{
+    if(head!=NUll)
+    {
+        SLNode* temp = head;
+        head = head->getNextNode();
+        delete temp;
+        numNodes--;
+    }
+}
+    
+void SLList::clear()
+{
+    while(head!=NULL)
+    {
+        removeHead();
+    }
+}
+        
+unsigned int SLList::getSize() const
+{
+    return numNodes;
+}
+        
+string SLList::toString()
+{
+    stringstream ss;
+    
+    for(SLNode* i = head; i!=NULL; i = 1->getNextNode())
+    {
+        ss << i->getContents();
+        if(i->getNextNode()!=NULL)
+        {
+            ss << ',';
+        }
+    }
+    
+    return ss.str();
+}
+
+================================================================================
+*list-test.cpp*
+
+#include "SLList.h"
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    SLList listy;
+    cout << "List: size " << listy.getSize() << endl;
+    
+    listy.removeHead();
+    
+    listy.insertHead(42);
+    listy.insertHead(99);
+    listy.insertHead(13);
+    listy.insertHead(27);
+    listy.insertHead(9);
+    listy.insertHead(604);
+    
+    cout << "List: size " << listy.getSize() << endl;
+    cout << listy.toString() << endl;
+    
+    listy.removeHead();
+    cout << "List: size " << listy.getSize() << endl;
+    cout << listy.toString() << endl;
+    
+    listy.clear();
+    cout << "List: size " << listy.getSize() << endl;
+    cout << listy.toString() << endl;
+    
+    return 0;
+}
+
+
+
+

@@ -1,0 +1,147 @@
+/*
+ * April 7th, 2014
+ */
+DATA STRUCTURES
+
+Array
+    a collection of multiple values                 basic cooling issues
+    one array -- one type of value
+    CRUD
+    ------
+    accessing data is fast
+    sorting is a pain!!!                            performance issues
+    searching
+
+Linked List
+           NODE ->link
+     __      __ |    __      __      __  
+  * |10| -> |20|--> |30| -> |40| -> |50|  -->  NULL
+  ^          ^
+  |          |
+  ---head    ---data
+  
+    there is no linked list
+        -algorithms
+        -sentinels
+    where is it?
+        -nodes linked together
+        __________
+       | __       |
+       ||10|----->|             simply-linked
+       |data link |
+        ----------
+            NODE
+            
+    class SLNode
+    {
+        public:
+            int getData();
+            SLNode* getNext();
+            void setNext(SLNode* newNext);
+            void setData(int newData);
+            
+        private:
+            int data;
+            SLNode* next;
+    }
+    
+***SLNode.h***
+#pragma once
+
+#include <cstdlib>
+using namespace std;
+
+class SLnode
+{
+    public:
+        SLNode();
+        SLNode(int newData);
+        virtual ~SLNode();
+        
+        int getData() const;
+        SLNode* getNext() const;
+        
+        void setData(int newData);
+        void setNext(SLNode* newNext);
+    
+    Private:
+        int data;
+        SLNode* next;
+};
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+***SLNode.cpp***
+#include header
+
+SLNode::SLNode()
+: next(NULL), data(0)
+{}
+
+SLNode::SLNode(int newData)
+: next(NULL), data(newData)
+{}
+
+SLNode::~SLNode()
+{
+    next = NULL;
+}
+
+int SLNode::getData() const
+{
+    return data;
+}
+
+SLNode* SLNode::getNext() const
+{
+    return next;
+}
+        
+void SLNode::setData(int newData)
+{
+    data = newData;
+}
+void SLNode::setNext(SLNode* newNext)
+{
+    next = newNext;
+}
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+***nodetest.cpp***
+
+#include "SLNode.h"
+
+#include <iostream>
+using namespace std;
+
+unt main()
+{
+    SLNode boyd;
+    SLNode don(1);
+    
+    cout << "Boyd is #" << boyd.getData() << endl;
+    cout << "Don is #" << don.getData() << endl;
+    
+    boyd.setNext(&don);
+    cout << "Boyd (#" << boyd.getData() << ") -> #" << boyd.getNext()->getData() << endl;
+    if(don.getNext() ==NULL)
+    {
+        cout << "Don has no neighbor" << endl;
+    }
+    else
+    {
+        cout << "Don (#" << don.getData() << ") -> #";// << don.getNext()->getData() << endl;
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
