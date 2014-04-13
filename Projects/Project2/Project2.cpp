@@ -1,10 +1,10 @@
-#include "Prize.h"
-#include "Box.h"
-
 #include <cstdlib>
-#include <cassert>
 #include <iostream>
 #include <string>
+
+#include "Box.h"
+//#include "Prize.h"
+
 using namespace std;
 
 /* for unit testing -- do not alter */
@@ -14,82 +14,8 @@ void unittest ();
 //int main (int argc, char* argv[])
 int main()
 {
-    /*int option = 0;
-    
-    cout << "Choose an option:" ;
-    cout << "0  -  Unit Test,";
-    cout << "1  -  Prize Menu";
-    cout << "2  -  Box Menu";
-    cout << "3  -  Exit" << endl;
-    cin >> option;
-    
-    if(option == 0)
-    {
-        unittest();
-    }
-    else if(option == 1)
-    {
-        cout << Prize.getPrizeName() << Prize.getPrizeValue() << endl;
-        cout << "Choose an option:";
-        cout << "0  -  Set prize name,";
-        cout << "1  -  Set prize value,";
-        cout << "2  -  Check equality of two values,";
-        cout << "3  -  Main Menu,";
-        cout << "4  -  Exit" << endl;
-        cin >> option;
-        
-        if(option == 0)
-        {
-            cout << "Choose a name";
-            cin >> newPrizeName;
-            
-            Prize.setPrizeName();
-            cout << Prize.getPrizeName() << Prize.getPrizeValue() << endl;
-        }
-        else if(option == 1)
-        {
-            cout << "Choose a value";
-            cin >> newPrizeValue;
-            
-            Prize.setPrizeValue();
-            cout << Prize.getPrizeName() << Prize.getPrizeValue() << endl;
-        }
-        else if(option == 2)
-        {
-            
-        }
-        else if(option == 3)
-        {
-            cout << Prize.getPrizeName() << Prize.getPrizeValue() << endl;
-        }
-        else if(option == 4)
-        {
-            cout << Prize.getPrizeName() << Prize.getPrizeValue() << endl;
-        }
-    }
-    else if(option == 2)
-    {
-        cout << Box.getBoxNumber() << Box.getBoxColor() << Box.getPrizeCapacity() << Box.getPrizeCount() << endl;
-        cout << "Choose an option:";
-        cout << "0  -  Set box number,";
-        cout << "1  -  Set box color,";
-        cout << "2  -  Add a prize,";
-        cout << "3  -  Retrieve a prize,";
-        cout << "4  -  Remove a prize,";
-        cout << "5  -  Main Menu,";
-        cout << "6  -  Exit" << endl;
-    }
-    else if(option == 3)
-    {
-        exit();
-    }
-    else
-    {
-        cout << "Invalid input, please try again.";
-    }
-    
-    */
     unittest();
+    
     return 0;
 }
 

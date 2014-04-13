@@ -19,19 +19,14 @@
 */
 
 Box::Box()
+: boxNumber(0), boxColor("NO COLOR"), prizeCapacity(5), prizeCount(0)
 {
-    boxNumber = 0;
-    boxColor = "NO COLOR";
-    prizeCapacity = 5;
-    prizeCount = 0;
     prizes = new Prize[prizeCapacity];
 }
+
 Box::Box(unsigned int newBoxNumber, string newBoxColor, unsigned int newPrizeCapacity)
+: boxNumber(newBoxNumber), boxColor(newBoxColor), prizeCapacity(newPrizeCapacity), prizeCount(0)
 {
-    boxNumber = newBoxNumber;
-    boxColor = newBoxColor;
-    prizeCapacity = newPrizeCapacity;
-    prizeCount = 0;
     prizes = new Prize[prizeCapacity];
 }
 
@@ -46,7 +41,7 @@ unsigned int Box::getBoxNumber() const
 }
 
 
-unsigned int Box::setBoxNumber(unsigned int newBoxNumber)
+void Box::setBoxNumber(unsigned int newBoxNumber)
 {
     boxNumber = newBoxNumber;
 }
@@ -56,7 +51,7 @@ string Box::getBoxColor() const
     return boxColor;
 }
 
-string Box::setBoxColor(string newBoxColor)
+void Box::setBoxColor(string newBoxColor)
 {
     boxColor = newBoxColor;
 }
@@ -66,16 +61,16 @@ unsigned int Box::getPrizeCapacity() const
     return prizeCapacity;
 }
 
-unsigned int Box::getPrizeCount(const)
+unsigned int Box::getPrizeCount () const
 {
-    return prizeCapacity;
+    return prizeCount;
 }
-//place prize in prizes array if there is space and return true, else return false
-bool Box::addPrize(Prize prize, bool value)
+
+bool Box::addPrize(Prize prize)
 {
     if(prizeCount < prizeCapacity)
     {
-        prize[prizeCount++] = prize;
+        prizes[prizeCount++] = prize;
         return true;
     }
     else
@@ -83,28 +78,27 @@ bool Box::addPrize(Prize prize, bool value)
         return false;
     }
 }
-//return a Prize if index is valid, else return scratch (data member declared in class header)
+
 Prize& Box::getPrize(unsigned int index)
 {
-    for(unsigned int i = 0; i < prizeCapacity; i++)
+    if(index < prizeCapacity)
+    {   
+        cout << "fault here";
+        return prizes[index];
+        prizes[index] = NULL;
+        cout << "fake fault";
+    }
+    else
     {
-        if(index < prizeCapacity)
-        {
-            return prizes[index];
-        }
-        else
-        {
-            return scratch;
-        }
+        return scratch;
     }
 }
-
 Prize Box::removePrize(unsigned int index)
 {
     if(index < prizeCapacity)
     {
         Prize temp = prizes[index];
-        prizes[index] = "";
+        prizes[index] = scratch;
         --prizeCount;
         
         for(unsigned int i = index; i< prizeCount;++i)

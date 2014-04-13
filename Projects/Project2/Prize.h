@@ -36,7 +36,7 @@ class Prize
          * friend overloaded operator==: returns true if the prizeName and prizeValue 
          * of the two Prizes being compared are equivalent, else return false
          */
-        friend bool operator== (Prize& firstPrize, Prize& secondPrize);
+        friend bool operator == (Prize firstPrize, Prize secondPrize);
     
     private:
         string prizeName;

@@ -1,7 +1,8 @@
 #pragma once 
 
 #include "Prize.h"
-#include <string>;
+#include <string>
+#include <iostream>
 using namespace std;
 
 /*
@@ -26,15 +27,14 @@ using namespace std;
 
 class Box
 {
-    
     public:
         Box();
         Box(unsigned int newBoxNumber, string newBoxColor, unsigned int newPrizeCapacity);
         ~Box();
         unsigned int getBoxNumber() const;
-        unsigned int setBoxNumber(newBoxNumber);
+        void setBoxNumber(unsigned int newBoxNumber);
         string getBoxColor() const;
-        string setBoxColor(newBoxColor);
+        void setBoxColor(string newBoxColor);
         unsigned int getPrizeCapacity() const;
         unsigned int getPrizeCount() const;
         bool addPrize(Prize prize);
@@ -45,7 +45,7 @@ class Box
         unsigned int boxNumber;
         string boxColor;
         Prize scratch;
-        Prize[] prizes;
+        Prize* prizes;
         unsigned int prizeCapacity;
         unsigned int prizeCount;
 };
