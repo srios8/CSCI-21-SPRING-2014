@@ -23,12 +23,12 @@ class SList
     /*
      *create a new SLNode and attach as head of list
      */
-        void inserHead(int newSize);
+        void insertHead(int content);
         
     /*
      *create a new SLNode and attach at the end of list
      */
-        void insertTail(int newSize);
+        void insertTail(int content);
         
     /*
      *remove the head node from the list

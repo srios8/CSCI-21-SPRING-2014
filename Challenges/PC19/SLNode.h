@@ -15,7 +15,7 @@ class SLNode
     /*
      * overloaded constructor, int parameter assigned to contents
      */
-        SLNode(int contents); 
+        SLNode(int newContents); 
 	
 	/*
 	 * destructor, sets nextNode to NULL

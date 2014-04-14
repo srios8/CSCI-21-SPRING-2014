@@ -20,6 +20,8 @@ int main ()
 {
 	unittest();
 	
+	SList();
+	
 	return 0;
 }
 

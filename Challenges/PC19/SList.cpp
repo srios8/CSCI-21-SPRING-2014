@@ -10,33 +10,30 @@ SList::~SList()
     clear();
 }
 
-void SList::inserHead(int newSize)
+void SList::insertHead(int content)
 {
-    SLNode* nodie = new SLNode(newSize);
+    SLNode* nodie = new SLNode(content);
     nodie->setNextNode(head);
     head = nodie;
     size++;
 }
 
-void SList::insertTail(int newSize)
+void SList::insertTail(int content)
 {
-    SLNode* temp = new SLNode(newSize);    
-
-    temp->setContents(newSize);
-    temp->setNextNode(NULL);
-
-    if(!head) 
+    if(head==NULL)//size == 0 an alternative
     {
-        head = temp;
-        return;
-    } 
-    else 
+        insertHead(content);
+    }
+    else
     {
-        SLNode* tail = head;
-        while(tail->setNextNode) 
+        SLNode* temp = new SLNode(content);//SLNode* temp(new SLNode(content))
+        SLNode* i = head;
+        while(i->getNextNode() != NULL)
         {
-        tail->setNextNode(temp);
+            i = i->getNextNode();
         }
+        i->setNextNode(temp);
+        size++;
     }
 }
 
@@ -53,7 +50,26 @@ void SList::removeHead()
 
 void SList::removeTail()
 {
-    
+    if(head!=NULL)
+    {
+        SLNode* i = head;
+        SLNode* trailer = NULL;
+        while(i->getNextNode() != NULL)
+        {
+            trailer = i;
+            i = i->getNextNode();
+        }
+        delete i;
+        size--;
+        if(trailer == NULL)
+        {
+            head = NULL;
+        }
+        else
+        {
+            trailer->setNextNode(NULL);
+        }
+    }
 }
 
 void SList::clear()
