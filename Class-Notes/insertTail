@@ -1,0 +1,14 @@
+singly - linked list(in class)---->doubly-linked list(project)
+ ____                                ____
+|data|-->next               prev<---|data|--->next
+ ----                                ----
+ 
+ insertTail(list.insertTail(newNode))
+ 
+1. create a new node
+2. starting a head:
+    jump along until next one is NULL
+3. point next one at the new node
+4. increment the count
+
+April 14th, 2014

@@ -1,7 +1,7 @@
 FLAGS = -Wall -Wextra -Werror -pedantic  
 
 Project2: Prize.o Box.o Project2.o
-	g++ -c $(FLAGS) Prize.o Box.o Project2.o -o Project2
+	g++ $(FLAGS) Prize.o Box.o Project2.o -o Project2
   
 Project2.o: Project2.cpp
 	g++ -c $(FLAGS) Project2.cpp -o Project2.o

@@ -1,43 +1,21 @@
 #include "Box.h"
 
-
-/*
-    Box (check UNIT TEST for required API)
-
-    *public default constructor: initial values boxNumber (0), boxColor ("NO COLOR"),               
-    prizeCapacity (5), prizeCount(0); in the definition, prizes array must be initialized to match prizeCapacity
-    *public overloaded constructor: parameters for boxNumber, boxColor, prizeCapacity;                    
-    in the definition, prizes array must be initialized to match prizeCapacity                                     
-    *public accessors/gets AND mutators/sets for boxNumber, boxColor                                
-    *public accessor/get ONLY for data members prizeCapacity, prizeCount                            
-    *public addPrize: parameters prize (Prize), return value (bool); place prize in                 
-    prizes array if there is space and return true, else return false
-    *public getPrize: parameters index (unsigned int), return value Prize&;                         
-    return a Prize if index is valid, else return scratch (data member declared in class header)
-    *public removePrize: parameters index (unsigned int), return value Prize;                       
-    remove and return Prize if index is valid, else return scratch (data member declared in class header)
-*/
-
 Box::Box()
+: boxNumber(0), boxColor("NO COLOR"), prizeCapacity(5), prizeCount(0)
 {
-    boxNumber = 0;
-    boxColor = "NO COLOR";
-    prizeCapacity = 5;
-    prizeCount = 0;
     prizes = new Prize[prizeCapacity];
 }
+
 Box::Box(unsigned int newBoxNumber, string newBoxColor, unsigned int newPrizeCapacity)
+: boxNumber(newBoxNumber), boxColor(newBoxColor), prizeCapacity(newPrizeCapacity), prizeCount(0)
 {
-    boxNumber = newBoxNumber;
-    boxColor = newBoxColor;
-    prizeCapacity = newPrizeCapacity;
-    prizeCount = 0;
     prizes = new Prize[prizeCapacity];
 }
 
 Box::~Box()
 {
     delete[] prizes;
+    prizes = NULL;
 }
 
 unsigned int Box::getBoxNumber() const
@@ -46,7 +24,7 @@ unsigned int Box::getBoxNumber() const
 }
 
 
-unsigned int Box::setBoxNumber(unsigned int newBoxNumber)
+void Box::setBoxNumber(unsigned int newBoxNumber)
 {
     boxNumber = newBoxNumber;
 }
@@ -56,7 +34,7 @@ string Box::getBoxColor() const
     return boxColor;
 }
 
-string Box::setBoxColor(string newBoxColor)
+void Box::setBoxColor(string newBoxColor)
 {
     boxColor = newBoxColor;
 }
@@ -66,16 +44,16 @@ unsigned int Box::getPrizeCapacity() const
     return prizeCapacity;
 }
 
-unsigned int Box::getPrizeCount(const)
+unsigned int Box::getPrizeCount () const
 {
-    return prizeCapacity;
+    return prizeCount;
 }
-//place prize in prizes array if there is space and return true, else return false
-bool Box::addPrize(Prize prize, bool value)
+
+bool Box::addPrize(Prize prize)
 {
     if(prizeCount < prizeCapacity)
     {
-        prize[prizeCount++] = prize;
+        prizes[prizeCount++] = prize;
         return true;
     }
     else
@@ -83,37 +61,27 @@ bool Box::addPrize(Prize prize, bool value)
         return false;
     }
 }
-//return a Prize if index is valid, else return scratch (data member declared in class header)
+
 Prize& Box::getPrize(unsigned int index)
 {
-    for(unsigned int i = 0; i < prizeCapacity; i++)
-    {
-        if(index < prizeCapacity)
-        {
-            return prizes[index];
-        }
-        else
-        {
-            return scratch;
-        }
-    }
+    return prizes[index];
 }
 
 Prize Box::removePrize(unsigned int index)
 {
-    if(index < prizeCapacity)
+    if(index < prizeCount)
     {
-        Prize temp = prizes[index];
-        prizes[index] = "";
+        Prize returnItem = prizes[index];
+        prizes[index] = scratch;
         --prizeCount;
-        
-        for(unsigned int i = index; i< prizeCount;++i)
+        for(unsigned int i = index; i < prizeCount; ++i)
         {
             prizes[i] = prizes[i+1];
         }
-        return temp;
+    
+        return returnItem;
     }
-    else
+    else 
     {
         return scratch;
     }
