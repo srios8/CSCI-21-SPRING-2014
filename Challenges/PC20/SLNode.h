@@ -25,7 +25,7 @@ class SLNode
 	/*
 	 * Getters/Setters
 	 */
-    	void setContents (int newContents);
+    	void setContents (int);
     	int getContents () const;
     	
         void setNextNode (SLNode*);

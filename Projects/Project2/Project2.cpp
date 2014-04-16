@@ -3,7 +3,6 @@
 #include <string>
 
 #include "Box.h"
-//#include "Prize.h"
 
 using namespace std;
 
@@ -15,6 +14,10 @@ void unittest ();
 int main()
 {
     unittest();
+    
+    Prize();
+    
+    Box();
     
     return 0;
 }

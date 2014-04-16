@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wextra -Werror -Wno-newline-eof -pedantic
+FLAGS = -Wall -Wextra -Werror -pedantic
 
 
 
@@ -73,15 +73,6 @@ PC6: PC6.cpp
 # Date completed: 2-19-2014
 PC7: PC7.cpp
 	g++ $(FLAGS) PC7.cpp -o PC7
-
-
-
-
-
-# Target for programming project 1
-# Date completed: 2-21-2014
-Project1: Project1.cpp
-	g++ $(FLAGS) Project1.cpp -o Project1
 
 
 

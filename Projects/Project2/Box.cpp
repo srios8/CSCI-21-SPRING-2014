@@ -1,23 +1,5 @@
 #include "Box.h"
 
-
-/*
-    Box (check UNIT TEST for required API)
-
-    *public default constructor: initial values boxNumber (0), boxColor ("NO COLOR"),               
-    prizeCapacity (5), prizeCount(0); in the definition, prizes array must be initialized to match prizeCapacity
-    *public overloaded constructor: parameters for boxNumber, boxColor, prizeCapacity;                    
-    in the definition, prizes array must be initialized to match prizeCapacity                                     
-    *public accessors/gets AND mutators/sets for boxNumber, boxColor                                
-    *public accessor/get ONLY for data members prizeCapacity, prizeCount                            
-    *public addPrize: parameters prize (Prize), return value (bool); place prize in                 
-    prizes array if there is space and return true, else return false
-    *public getPrize: parameters index (unsigned int), return value Prize&;                         
-    return a Prize if index is valid, else return scratch (data member declared in class header)
-    *public removePrize: parameters index (unsigned int), return value Prize;                       
-    remove and return Prize if index is valid, else return scratch (data member declared in class header)
-*/
-
 Box::Box()
 : boxNumber(0), boxColor("NO COLOR"), prizeCapacity(5), prizeCount(0)
 {
@@ -33,6 +15,7 @@ Box::Box(unsigned int newBoxNumber, string newBoxColor, unsigned int newPrizeCap
 Box::~Box()
 {
     delete[] prizes;
+    prizes = NULL;
 }
 
 unsigned int Box::getBoxNumber() const
@@ -81,33 +64,24 @@ bool Box::addPrize(Prize prize)
 
 Prize& Box::getPrize(unsigned int index)
 {
-    if(index < prizeCapacity)
-    {   
-        cout << "fault here";
-        return prizes[index];
-        prizes[index] = NULL;
-        cout << "fake fault";
-    }
-    else
-    {
-        return scratch;
-    }
+    return prizes[index];
 }
+
 Prize Box::removePrize(unsigned int index)
 {
-    if(index < prizeCapacity)
+    if(index < prizeCount)
     {
-        Prize temp = prizes[index];
+        Prize returnItem = prizes[index];
         prizes[index] = scratch;
         --prizeCount;
-        
-        for(unsigned int i = index; i< prizeCount;++i)
+        for(unsigned int i = index; i < prizeCount; ++i)
         {
             prizes[i] = prizes[i+1];
         }
-        return temp;
+    
+        return returnItem;
     }
-    else
+    else 
     {
         return scratch;
     }

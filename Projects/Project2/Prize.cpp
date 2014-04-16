@@ -1,32 +1,19 @@
 #include "Prize.h"
 
-
-/*
- Prize (check UNIT TEST for required API)
-
-    private data members: prizeName (string), prizeValue (unsigned int)             DONE
-    public default constructor: initial values itemName ("NO NAME"), itemValue (0)  DONE
-    public overloaded constructor: parameters for all data members                  DONE
-    public destructor: empty                                                        DONE
-    friend overloaded operator==: returns true if the prizeName and prizeValue of the two Prizes being compared are equivalent, else return false
-    public accessors/gets and mutators/sets for all data members
-
-*/
-
 Prize::Prize()
 : prizeName("NO NAME"), prizeValue(0)
 {}
 
-Prize::Prize(string newPrizeName, unsigned int newPrizeValue)
-: prizeName(newPrizeName), prizeValue(newPrizeValue)
+Prize::Prize(string itemName, unsigned int itemValue)
+: prizeName(itemName), prizeValue(itemValue)
 {}
 
 Prize::~Prize()
 {}
 
-void Prize::setPrizeName(string newPrizeName)
+void Prize::setPrizeName(string newName)
 {
-    prizeName = newPrizeName;
+    prizeName = newName;
 }
 
 
@@ -36,9 +23,9 @@ string Prize::getPrizeName() const
 }
 
     
-void Prize::setPrizeValue(unsigned int newPrizeValue)
+void Prize::setPrizeValue(unsigned int newValue)
 {
-    prizeValue = newPrizeValue;
+    prizeValue = newValue;
 }
 
 
@@ -48,14 +35,12 @@ unsigned int Prize::getPrizeValue() const
 }
 
 
-bool operator== (Prize firstPrize, Prize secondPrize)
+bool operator==(const Prize &prizeOne, const Prize &prizeTwo)
 {
-    if(firstPrize.prizeName==secondPrize.prizeName && firstPrize.prizeValue==secondPrize.prizeValue)
+    if(prizeOne.prizeValue == prizeTwo.prizeValue && prizeOne.prizeName == prizeTwo.prizeName)
     {
-        return true;
+      return true;  
     }
-    else
-    {
-        return false;
-    }
+    return false;
+  
 }
