@@ -13,9 +13,14 @@ void unittest ();
 //int main (int argc, char* argv[])
 int main()
 {
-    unittest();
-    
-    Prize();
+	unittest();
+	
+	//
+	// Grader comments 2014.04.16
+	// This won't test the code; it only creates nameless objects.
+	// -200 points
+	//
+	Prize();
     
     Box();
     
