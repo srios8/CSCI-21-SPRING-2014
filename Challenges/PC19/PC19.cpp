@@ -19,7 +19,13 @@ void unittest ();
 int main ()
 {
 	unittest();
-	
+
+	//
+	// Grader comments 2014.04.16
+	// This doesn't really do anything. It constructs an SList
+	// object but the object has no name, and it just goes away
+	// when we exit main.
+	//
 	SList();
 	
 	return 0;

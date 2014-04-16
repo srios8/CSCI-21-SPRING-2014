@@ -7,6 +7,10 @@
 #include<sstream>
 using namespace std;
 
+//
+// Grader comments 2014.04.16
+// Make your function documentation look like Boyd's examples.
+//
 class SList
 {
     public:
