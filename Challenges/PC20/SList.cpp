@@ -1,16 +1,16 @@
 #include "SList.h"
 #include "SLNode.h"
 
-SList()
+SList::SList()
 :head(NULL), size(0)
 {}
 
-virtual~SList()
+SList::~SList()
 {
     clear();
 }
 
-void insertHead(int content)
+void SList::insertHead(int content)
 {
     SLNode* nodie = new SLNode(content);
     nodie->setNextNode(head);
@@ -18,7 +18,7 @@ void insertHead(int content)
     size++;
 }
 
-void insertTail(int content)
+void SList::insertTail(int content)
 {
     if(head==NULL)
     {
@@ -37,7 +37,7 @@ void insertTail(int content)
     }
 }
 
-void removeHead()
+void SList::removeHead()
 {
     if(head!=NULL)
     {
@@ -48,7 +48,7 @@ void removeHead()
     }
 }
 
-void removeTail()
+void SList::removeTail()
 {
     if(head!=NULL)
     {
@@ -72,17 +72,88 @@ void removeTail()
     }
 }
 
-void insert(int)
+void SList::insert(int value)
 {
-    
+    if(head==NULL)
+    {
+        insertHead(value);
+    }
+    else if(head->getNextNode()==NULL)
+    {
+        if(value <= head->getContents())
+        {
+            insertHead(value);
+        }
+        else
+        {
+            insertTail(value);
+        } 
+    }
+    else
+    {
+        if(value <= head->getContents())
+        {
+            insertHead(value);
+        }
+        else
+        {
+            SLNode* trailer = NULL;
+            SLNode* spot = head;
+            while(spot->getNextNode() != NULL && value > spot->getContents())
+            {
+                trailer = spot;
+                spot = spot->getNextNode();
+            }
+            if(value > spot->getContents())
+            {
+                insertTail(value);
+            }
+            else
+            {
+                SLNode* nodee = new SLNode(value);
+                nodee->setNextNode(spot);
+                trailer->setNextNode(nodee);
+                size++;
+            }
+        }
+    }
 }
 
-bool removeFirst(int)
+bool SList::removeFirst(int target)
 {
-    
+    if(head==NULL)
+    {
+        return false;
+    }
+    else
+    {
+        SLNode* trailer = NULL;
+        SLNode* spot = head;
+        while(spot!=NULL && spot->getContents() != target)
+        {
+            trailer = spot;
+            spot = spot->getNextNode();
+        }
+        if(spot==NULL)
+        {
+            return false;
+        }
+        else if(spot==head)
+        {
+            removeHead();
+            return true;
+        }
+        else
+        {
+            trailer->setNextNode(spot->getNextNode());
+            delete spot;
+            size--;
+            return true;
+        }
+    }
 }
 
-void clear()
+void SList::clear()
 {
     while(head!=NULL)
     {
@@ -90,12 +161,12 @@ void clear()
     }
 }
 
-unsigned int getSize() const
+unsigned int SList::getSize() const
 {
     return size;
 }
 
-string ToString()  const
+string SList::toString()  const
 {
     stringstream ss;
     

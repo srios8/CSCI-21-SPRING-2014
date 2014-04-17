@@ -21,11 +21,11 @@ class SList
     /*
      *create a new SLNode and attach as head of list
      */
-        void insertHead(int);
+        void insertHead(int content);
     /*
      *create a new SLNode and attach at the end of list
      */
-        void insertTail(int);
+        void insertTail(int content);
     /*
      *remove the head node from the list
      */
@@ -39,25 +39,25 @@ class SList
 	 *in the list so that the values in the nodes are in 
 	 *ascending order from head node to tail node
      */
-        void insert(int);
-        /*
-         *remove the first appearance of the parameter value;
-	     *return true on success or false if the value is not in the list
-         */
-        bool removeFirst(int);
-        /*
-         *clear the entire contents of the list, freeing all memory
-	     *associated with all nodes
-         */
+        void insert(int value);
+    /*
+     *remove the first appearance of the parameter value;
+	 *return true on success or false if the value is not in the list
+     */
+        bool removeFirst(int target);
+    /*
+     *clear the entire contents of the list, freeing all memory
+	 *associated with all nodes
+     */
         void clear();
         unsigned int getSize() const;
-        /*
-         *return a string representation of the contents
-	     *of all nodes in the list, in the format
-	     *NUM1,NUM2,...,LASTNUM; return empty string on 
-	     *empty list
-         */
-        string ToString()  const;
+    /*
+     *return a string representation of the contents
+	 *of all nodes in the list, in the format
+	 *NUM1,NUM2,...,LASTNUM; return empty string on 
+	 *empty list
+     */
+        string toString()  const;
     
     private:
     /*
