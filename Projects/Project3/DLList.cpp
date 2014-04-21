@@ -44,7 +44,49 @@ void DLList::pushBack(int newContents)
 
 void DLList::insert(int newContents)
 {
-    
+    if(head==NULL)
+    {
+        insertHead(newContents);
+    }
+    else if(head->getNextNode()==NULL)
+    {
+        if(value <= head->getContents())
+        {
+            insertHead(newContents);
+        }
+        else
+        {
+            insertTail(newContents);
+        } 
+    }
+    else
+    {
+        if(value <= head->getContents())
+        {
+            insertHead(newContents);
+        }
+        else
+        {
+            SLNode* trailer = NULL;
+            SLNode* spot = head;
+            while(spot->getNextNode() != NULL && value > spot->getContents())
+            {
+                trailer = spot;
+                spot = spot->getNextNode();
+            }
+            if(value > spot->getContents())
+            {
+                insertTail(newContents);
+            }
+            else
+            {
+                SLNode* nodee = new SLNode(newContents);
+                nodee->setNextNode(spot);
+                trailer->setNextNode(nodee);
+                size++;
+            }
+        }
+    }
 }
 
 int DLList::getFront() const
@@ -113,7 +155,36 @@ void DLList::popBack()
 
 bool DLList::removeFirst(int target)
 {
-            
+    if(head==NULL)
+    {
+        return false;
+    }
+    else
+    {
+        SLNode* trailer = NULL;
+        SLNode* spot = head;
+        while(spot!=NULL && spot->getContents() != target)
+        {
+            trailer = spot;
+            spot = spot->getNextNode();
+        }
+        if(spot==NULL)
+        {
+            return false;
+        }
+        else if(spot==head)
+        {
+            removeHead();
+            return true;
+        }
+        else
+        {
+            trailer->setNextNode(spot->getNextNode());
+            delete spot;
+            size--;
+            return true;
+        }
+    }
 }
 
 bool DLList::removeAll(int target)

@@ -4,7 +4,7 @@
  * April 21st, 2014
  */
 
-//#include "box.h"
+#include "Box.h"
 
 #include <cassert>
 #include <cstdlib>
