@@ -1,71 +1,93 @@
 #pragma once
-#include <iostream>
 
+#include <string>
 #include <cstdlib>
-#include<sstream>
-using namespace std;
 
-class DLNode
-{
+template <typename T>
+class DLNode{
     public:
-    /*
-     *initialize contents to zero, next and previous to NULL
-     */
-        DLNode(); 
-     
-    /*
-     *initialize contents to newContents, next and previous to NULL
-     */
-        DLNode (int newContents);
+        /*
+         * Default constructor that initializes nextNode/prevNode to NULL.
+         */
+        DLNode()
+        : nextNode(NULL), previousNode(NULL)
+        {}
         
-    /*
-     *nothing to be done
-     */
-        virtual ~DLNode();
+        /*
+         * Constructor initializes nextNode/prevNode to NULL and contents to newContents.
+         * @param newContents an int representing new contents
+         */
+        DLNode(T newContents)
+        : nextNode(NULL), previousNode(NULL), contents(newContents)
+        {}
         
-    /*
-     *
-     */
-        void setContents (int newContents);
-     
-    /*
-     *
-     */
-        void setNext (DLNode* newNext);
-    
-    /*
-     *
-     */
-        void setPrevious (DLNode* newPrevious);
-    
-    /*
-     *
-     */
-        int getContents () const;
-    
-    /*
-     *
-     */
-        DLNode* getNext () const;
-    
-    /*
-     *
-     */
-        DLNode* getPrevious () const;
-    
+        /*
+         * Default deconstructor sets nextNode/prevNode to NULL
+         */
+        ~DLNode()
+        {
+            nextNode = NULL;
+            previousNode = NULL;
+        }
+        
+        /*
+         * Sets contents to new value 
+         * @param newContents an int redfining a value
+         */
+        void setContents(T newContents)
+        {
+            contents = newContents;
+        }
+        
+        /*
+         * Reveals contents of list.
+         * @return an integer representing contents of node
+         */
+        T getContents() const
+        {
+            return contents;
+        }
+        
+        /*
+         * Sets pointer to following node
+         * @param newNextNode node being set
+         */
+        void setNext(DLNode<T>* newNextNode)
+        {
+            nextNode = newNextNode;
+        }
+        
+        /*
+         * Sets to pointer to previous node
+         * @param newNextNode is the node being set.
+         */
+        void setPrevious(DLNode<T>* newPreviousNode)
+        {
+            previousNode = newPreviousNode;
+        }
+        
+        /*
+         * Reveals value of next node
+         * @return the following node
+         */
+        DLNode* getNext() const
+        {
+            return nextNode;
+        }
+        
+        /*
+         * Reveals value of previous node
+         * @return previous node
+         */
+        DLNode* getPrevious() const
+        {
+            return previousNode;
+        }
+        
     private:
-    /*
-     *
-     */
-        int contents;
+  
         
-    /*
-     *pointer to previous node
-     */
-        DLNode* previousNode;
-     
-     /*
-      *pointer to next node
-      */
-        DLNode* nextNode;
-      
+        DLNode<T>* nextNode;
+        DLNode<T>* previousNode;
+        T contents;
+};

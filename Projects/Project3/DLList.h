@@ -1,102 +1,376 @@
 #pragma once
-#include <iostream>
 
-#include <cstdlib>
-#include<sstream>
+#include <string>
+#include <sstream>
+#include "DLNode.h"
 using namespace std;
 
-class DLList
+struct Error
 {
+    Error (string newMessage = "Error")
+    : message(newMessage)
+    {}
+
+    string message;
+};
+
+template <typename T>
+class DLList{
     public:
-    /*
-     *initialize count to zero, head and tail to NULL
-     */
-        DLList();
+        /*
+         * Default Constructor which purpose is to initialize head/tail to NULL and size to 0
+         */
+        DLList()
+        : head(NULL), tail(NULL), size(0)
+        {}
         
-    /*
-     *call clear function
-     */
-        virtual~DLList();
+        /*
+         * Default deconstructor 
+         */
+        ~DLList()
+        {
+            clear();
+        }
         
-    /*
-     *return count
-     */
-        unsigned int getSize() const;
+        /*
+         * Adds a new node at the front of the list
+         * @param contents an int with content of node
+         */
+        void pushFront(T contents)
+        {
+            DLNode<T>* temp = new DLNode<T>(contents);
+            
+            if(head == NULL)
+            {	
+                head = tail = temp;
+            }
+            else if(head->getNext() == NULL)
+            {
+                temp->setNext(head);
+                tail->setPrevious(temp);
+                head = temp;
+            }
+            else
+            {
+                temp->setNext(head);
+                DLNode<T>* i = tail;
+                
+                while(i->getPrevious() != NULL)
+                {
+                    i = i->getPrevious();
+                }
+                
+                i->setPrevious(temp);
+                head = temp;
+            }
+            size++;
+        }
         
-    /*
-     *create new DLNode with newContents and attach at head; *should not be called in conjunction with insert
-     */
-        void pushFront(int newContents);
+        /*
+         * Adds a a node at the end of the list
+         * @param contents an int with contents of a node
+         */
+        void pushBack(T contents)
+        {
+            DLNode<T>* temp = new DLNode<T>(contents);
+            temp->setPrevious(tail);
+            tail=temp;
         
-    /*
-     *create new DLNode with newContents and attach at tail; *should not be called in conjunction with insert
-     */
-        void pushBack(int newContents);
+            if(tail->getPrevious()==NULL)
+                head=tail;
+            else
+                tail->getPrevious()->setNext(tail);
+        }
         
-    /*
-     *create new DLNode with newContents and insert in ascending (based on newContents) order; *should not be called in conjunction with pushFront or pushBack
-     */
-        void insert(int newContents);
+        /*
+         * Removes front node of list(head)
+         */
+        void popFront()
+        {
+            if(head != NULL)
+            {
+                if(head == tail)
+                {
+                    delete head;
+                    head = NULL;
+                    tail = NULL;
+                }
+                else
+                {
+                    size--;
+                    DLNode<T> *oldHead = head;
+                    head = head->getNext();
+                    head->setPrevious(NULL);
+                    delete oldHead;
+                }
+            }
+        }
         
-    /*
-     *return the value of the contents of the head node; throw an exception (throw "LIST EMPTY") if the list is empty
-     */
-        int getFront() const;
+        /*
+         * Removes node at end of list(tail).
+         */
+        void popBack()
+        {
+            if(tail != NULL)
+            {
+                if(head == tail)
+                {
+                    delete head;
+                    head = NULL;
+                    tail = NULL;
+                }
+                else
+                {
+                   size--;
+                    DLNode<T>* oldTail = tail;
+                    tail = tail->getPrevious();
+                    tail->setNext(NULL);
+                    delete oldTail; 
+                }
+            }
+        }
         
-    /*
-     *return the value of the contents of the tail node; throw an exception (throw "LIST EMPTY") if the list is empty
-     */
-        int getBack() const;
+        /*
+         * Reveals content of front node(head)
+         * @return an int containing contents of node
+         */
+        T getFront() const
+        {
+            if(head != NULL)
+            {
+                return head->getContents();
+            }
+            else
+            {
+                throw Error("LIST EMPTY");
+            }
+        }
         
-    /*
-     *return true if target is in list, else return false
-     */
-        bool get(int target) const;
+        /*
+         * Reveals contents of last node of list(tail)
+         * @return an int with contents of last node.
+         */
+        T getBack() const
+        {
+            if(tail != NULL)
+            {
+                return tail->getContents();
+            }
+            else
+            {
+                throw Error("LIST EMPTY");
+            }
+        }
         
-    /*
-     *remove current head node; do nothing if list is empty
-     */
-        void popFront(); 
+        /*
+         * Checks list for value
+         * @param target an int the function looks for.
+         * @returns bool determining whether the target exists or not.
+         */
+        bool get(T target) const
+        {
+            bool found = false;
+            
+            if(head != NULL)
+            {
+                DLNode<T>* nodie = head;
+                
+                while(nodie != NULL)
+                {
+                    if(nodie->getContents() == target)
+                    {
+                        found = true;
+                    }
+                    nodie = nodie->getNext();
+                }
+            }
+            return found;
+        }
         
-    /*
-     *remove current tail node; do nothing if list is empty
-     */
-        void popBack();
+        /*
+         * Inserts a node in the link in ascending order
+         * @param contents an int with contents of node.
+         */
+        void insert(T contents)
+        {
+            if(head==NULL)
+            {
+                pushFront(contents);
+            }
+            else if(head->getNext()==NULL)
+            {
+                if(contents <= head->getContents())
+                {
+                    pushFront(contents);
+                }
+                else
+                {
+                    pushBack(contents);
+                } 
+            }
+            else
+            {
+                if(contents <= head->getContents())
+                {
+                    pushFront(contents);
+                }
+                else
+                {
+                    DLNode<T>* trailer = NULL;
+                    DLNode<T>* spot = head;
+                    while(spot->getNext() != NULL && contents > spot->getContents())
+                    {
+                        trailer = spot;
+                        spot = spot->getNext();
+                    }
+                    if(contents > spot->getContents())
+                    {
+                        pushBack(contents);
+                    }
+                    else
+                    {
+                        DLNode<T>* nodee = new DLNode<T>(contents);
+                        nodee->setNext(spot);
+                        trailer->setNext(nodee);
+                        size++;
+                    }
+                }
+            }
+        }
         
-    /*
-     *remove the first instance of a DLNode containing target; do nothing if target is not found
-     */
-        bool removeFirst(int target);
+        /*
+         * Removes first instance of specified number
+         * @param target an integer to be removed
+         * @return a bool determining whether target was removed or not
+         */
+        bool removeFirst(T target)
+        {
+            bool found = false;
         
-    /*
-     *remove all instances of DLNode containing target; do nothing if target is not found
-     */
-        bool removeAll(int target);
+            DLNode<T>* nodie = head;
+            
+            while(nodie != NULL)
+            {
+                DLNode<T> *previousNode = nodie->getPrevious();
+                DLNode<T> *nextNode = nodie->getNext();
+                
+                if(nodie->getContents() == target)
+                {
+                    if(nodie == head)
+                    {
+                        popFront();
+                    }
+                    else if(nodie == tail)
+                    {
+                        popBack();
+                    }
+                    else
+                    {
+                        size--;
+                        previousNode->setNext(nextNode);
+                        nextNode->setPrevious(previousNode);
+                        delete nodie;
+                        found = true;
+                    }
+                    found = true;
+                    break;
+                }
+                nodie = nextNode;
+            }
+            
+            return found;
+        }
         
-    /*
-     *clear all nodes from list, reset count to zero, set head and tail to NULL
-     */
-        void clear();
+        /*
+         * Removes all instances of specified number.
+         * @param target an int which is number to be removed
+         * @return a bool determining whether target was removed removed.
+         */
+        bool removeAll(T target)
+        {
+            bool found = false;
         
-    /*
-     *display the contents of each node in the list, formatted per the program specification ("NUM1,NUM2,NUM3,...,NUMX"), to the output stream out
-     */
-        friend ostream& operator == (ostream& out, const DLList& src);
-    
+            DLNode<T>* nodie = head;
+            
+            while(nodie != NULL)
+            {
+                DLNode<T>* previousNode = nodie->getPrevious();
+                DLNode<T>* nextNode = nodie->getNext();
+                
+                if(nodie->getContents() == target)
+                {
+                    if(nodie == head)
+                    {
+                        popFront();
+                    }
+                    else if(nodie == tail)
+                    {
+                        popBack();
+                    }
+                    else
+                    {
+                        size--;
+                        previousNode->setNext(nextNode);
+                        nextNode->setPrevious(previousNode);
+                        delete nodie;
+                    }
+                    found = true;
+                }
+                nodie = nextNode;
+            }
+            
+            return found;
+        }
+        
+        /*
+         * Clears list; deletes all nodes.
+         */
+        void clear()
+        {
+            while(head != NULL)
+            {
+                popFront();
+            }
+            size = 0;
+        }
+        
+        /*
+         * Gets number of nodes in list
+         * @return an unsigned int representing size of list
+         */
+        unsigned int getSize() const
+        {
+            return size;
+        }
+        
+        /*
+         * Oveorloads operator to reveal the contents of the list separated by comas
+         * @param out an ostream& that shows the list's contents
+         * @param src a DLList& contains the contents
+         */
+        friend ostream& operator<<(ostream& out, const DLList<T>& src)
+        {
+            stringstream ss;
+            DLNode<T>* node = src.head;
+            
+            while(node != NULL)
+            {
+                ss << node->getContents();
+                node = node->getNext();
+                if(node != NULL)
+                {
+                    ss << ',';
+                }
+            }
+            out << ss.str();
+            return out;
+        }
+        
     private:
-    /*
-     *count of nodes
-     */
-        int numNodes;
-        
-    /*
-     *pointer to head node
-     */
-        DLList*head;
-        
-    /*
-     *pointer to tail node
-     */
-        DLList*tail;
     
+        DLNode<T>* head;
+        
+        DLNode<T>* tail;
+        
+        unsigned int size;
 };
