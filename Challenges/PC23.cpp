@@ -63,13 +63,6 @@ bool wordIsPalindrome (string word)
     {
         return wordIsPalindrome(word.substr(1, word.length()-2));;
     }
-    /*
-    if ((word.length() == 0) || (word.length() == 1))
-        return true;
-    if (word[0] == word[word.length() - 1])
-        return wordIsPalindrome(word.substr(1, (word.length() - 2)));
-    return false;
-     */
 }
 
 /*
