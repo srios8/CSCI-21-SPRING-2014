@@ -156,6 +156,16 @@ PC15: PC15.cpp
 # Date completed: 04-2-2014
 PC16: PC16.cpp
 	g++ $(FLAGS) PC16.cpp -o PC16
+
+
+
+
+
+
+# Target for programming challenge 23
+# Date completed: 04-28-2014
+PC23: PC23.cpp
+	g++ $(FLAGS) PC23.cpp -o PC23
 	
 	
 	
