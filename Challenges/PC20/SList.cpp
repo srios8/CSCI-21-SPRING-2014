@@ -78,7 +78,7 @@ void SList::insert(int value)
     {
         insertHead(value);
     }
-    else if(head->getNextNode()==NULL)
+    /*else if(head->getNextNode()==NULL)
     {
         if(value <= head->getContents())
         {
@@ -90,8 +90,8 @@ void SList::insert(int value)
         } 
     }
     else
-    {
-        if(value <= head->getContents())
+    {*/
+        else if(value <= head->getContents())
         {
             insertHead(value);
         }
@@ -117,7 +117,7 @@ void SList::insert(int value)
             }
         }
     }
-}
+//}
 
 bool SList::removeFirst(int target)
 {
