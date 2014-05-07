@@ -6,7 +6,7 @@
         {}
         
         BSTNode::BSTNode(int newContents)
-        :contents(newContents)
+        :leftChild(NULL), rightChild(NULL), contents(newContents)
         {}
         
         BSTNode::~BSTNode()
