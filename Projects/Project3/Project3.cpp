@@ -1,3 +1,13 @@
+//
+// Grader comments 2014.05.15
+// + 50: naming conventions good
+// + 50: header documentation missing
+// + 50: formatting good
+// -  5: Makefile -- see comments there
+// +113: driver -- see comments below; look for "grader comments" and "Rob"
+// +150: DLNode good
+// +280: DLList -- see comments DLList.cpp
+// 
 /*
  *Programming Project 3
  *Stacy Rios
@@ -14,6 +24,13 @@
 #include <string>
 using namespace std;
 
+//
+// Grader comments 2014.05.15
+// -  4: X needs to check for the list not existing yet.
+// - 28: All commands except C need to check for the list not existing
+//       and report "MUST CREATE LIST".
+// -  5: A & Z say "VALUE LIST EMPTY" when the list is empty. Should just be "LIST EMPTY".
+//
 int main(int argc, char *argv[])
 {
     if(argc <= 1)
@@ -52,8 +69,12 @@ int main(int argc, char *argv[])
                 {
                     if(letter == 'X')
                     {
-                        cout << "LIST CLEARED" << endl;
-                        nodeList->clear();
+						if(nodeList == 0) {	// Rob added to make grading easier
+							cout << "MUST CREATE LIST" << endl;
+						} else {
+	                        cout << "LIST CLEARED" << endl;
+	                        nodeList->clear();
+						}
                     }
                     else if(letter == 'D')
                     {
