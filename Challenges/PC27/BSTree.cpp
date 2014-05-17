@@ -75,13 +75,13 @@ bool BSTree::remove (int value, BSTNode*& tempRoot)
             BSTNode* oldPtr = tempRoot;
             tempRoot = tempRoot->getRightChild();
             delete oldPtr;
+            size--;
         }
         else
         {
             removeMax(tempRoot -> getContents(), tempRoot -> getLeftChild());
         }
-            size--;
-            return true;
+        return true;
     }
 }
     	
@@ -94,7 +94,9 @@ void BSTree::removeMax (int& value, BSTNode*& tempRoot)
         delete maxNode;
     }
     else
+    {
         removeMax(value, tempRoot -> getRightChild());
+    }
 }
 
 void BSTree::clear (BSTNode*& tempRoot)
