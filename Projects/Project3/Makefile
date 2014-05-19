@@ -8,7 +8,11 @@
 # Target for programming project 3
 # Date completed: 04-25-2014
 
-FLAGS = -Wall -Werror -Wextra -pedantic
+#
+# Grader comments 2014.05.15
+# cleanall option needs to clean everything, including the .o files
+#
+FLAGS = -Wall -Werror -Wextra -pedantic -Wno-newline-eof
 
 Project3: Project3.o  
 	g++ $(FLAGSFLAGS) Project3.o -o Project3
