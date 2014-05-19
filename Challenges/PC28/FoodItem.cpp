@@ -52,6 +52,11 @@ string FoodItem::toString()
     ss.setf(ios::fixed);
     ss.setf(ios::showpoint);
     ss.precision(2);
+//
+// Grader comments 2014.05.19
+// item.getName and item.getValue below need to be item.getName() and
+// item.getValue(). This won't compile.
+//
     ss << item.getName << ", " << item.getValue << ", " << units << " " << unitOfMeasure << ", " << calories << " calories" << endl;
     return ss.str();
 }
