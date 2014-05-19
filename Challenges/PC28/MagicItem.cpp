@@ -1,12 +1,8 @@
 #include "MagicItem.h"
 
-MagicItem::MagicItem(string newName, unsigned int newValue, string newDescription, unsigned int newManaRequired): Item(name, value)
-{
-    name = newName;
-    value = newValue;
-    description = newDescription;
-    manaRequired = newManaRequired;
-}
+MagicItem::MagicItem(string newName, unsigned int newValue, string newDescription, unsigned int newManaRequired)
+:Item(newName, newValue), description(newDescription), manaRequired(newManaRequired)
+{}
 
 MagicItem::~MagicItem()
 {}
@@ -21,12 +17,12 @@ void MagicItem::setManaRequired(unsigned int newManaRequired)
     manaRequired = newManaRequired;
 }
 
-string MagicItem::getDescription()
+string MagicItem::getDescription() const
 {
     return description;
 }
 
-unsigned int MagicItem::getManaRequired()
+unsigned int MagicItem::getManaRequired() const
 {
     return manaRequired;
 }
@@ -34,6 +30,6 @@ unsigned int MagicItem::getManaRequired()
 string MagicItem::toString()
 {
     stringstream ss;
-    ss << name << ", " << value << ", " << description << ", requires " << manaRequired << " mana" << endl;
+    ss << getName() << ", $" << getValue() << ", " << description << ", requires " << manaRequired << " mana";
     return ss.str();
 }

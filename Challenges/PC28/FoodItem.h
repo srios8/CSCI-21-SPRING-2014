@@ -1,3 +1,4 @@
+#pragma once
 #include "Item.h"
 
 #include<sstream>
@@ -19,11 +20,11 @@ class FoodItem: public Item
     	
     	void setUnits(float newUnits);
     	
-    	unsigned int getCalories();
+    	unsigned int getCalories() const;
     	
-    	string getUnitOfMeasure();
+    	string getUnitOfMeasure() const;
     	
-    	float getUnits();
+    	float getUnits() const;
     	
     	string toString();
     
