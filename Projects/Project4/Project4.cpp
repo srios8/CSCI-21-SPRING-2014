@@ -1,3 +1,7 @@
+//
+// Grader comments 2014.05.22
+// -50 points total
+//
 /*
  * Programming Project 4
  * Binary Search Tree
@@ -40,11 +44,25 @@ int main(int argc, char *argv[])
                 char letter = line[0];
                 
                 if(letter == '#')
-                {}
+                {
+                	
+                }
+
+				//
+				// Grader comments 2014.05.22
+				// You were close here. See below.
+				// -10 points
+				//
                 /*else if(leafty == NULL)
                 {
                     cout << "MUST CREATE TREE INSTANCE" << endl;
                 }*/
+					
+				else if((leafty == 0) && (letter != 'C'))
+				{
+					cout << "MUST CREATE TREE INSTANCE" << endl;
+				}
+
                 else if(letter == 'C')
                 {
                     if(leafty != NULL)
@@ -102,12 +120,21 @@ int main(int argc, char *argv[])
                         
                         if(letter == 'I')
                         {
-                            if(leafty->insert(line)){
+							//
+							// Grader comments 2014.05.22
+							// Should insert str here, not line.
+							// -10 points
+							//
+							// Also, the int called "value" above is unnecessary.
+							// Note that you never use it anywhere.
+							// 
+							//
+                            if(leafty->insert(str)){					// Rob
                                 cout << "WORD " << str << " INSERTED" << endl;
                             }
                             else
                             {
-                                Word* wordie = leafty->getData(line);
+                                Word* wordie = leafty->getData(str);	// Rob
                                 wordie->incrementCount();
                                 cout << "WORD " << str << " INCREMENTED" << endl;
                             }
@@ -116,7 +143,12 @@ int main(int argc, char *argv[])
                         {
                             if(letter == 'F')
                             {
-                                if(leafty->find(line))
+							//
+							// Grader comments 2014.05.22
+							// Should insert str here, not line.
+							// -10 points
+							//
+                                if(leafty->find(str))
                                 {
                                     cout << "FOUND " << str << endl;
                                 }
@@ -127,7 +159,12 @@ int main(int argc, char *argv[])
                             }
                             else if(letter == 'R')
                             {
-                                if(leafty->remove(line))
+							//
+							// Grader comments 2014.05.22
+							// Should insert str here, not line.
+							// -10 points
+							//
+                                if(leafty->remove(str))
                                 {
                                     cout << "REMOVED " << str << endl;
                                 }
@@ -137,7 +174,12 @@ int main(int argc, char *argv[])
                             }
                             else if(letter == 'G')
                             {
-                                Word* wordie = leafty->getData(line);
+							//
+							// Grader comments 2014.05.22
+							// Should insert str here, not line.
+							// -10 points
+							//
+                                Word* wordie = leafty->getData(str);
                                 if(wordie != NULL)
                                 {
                                     cout << "GOT " << str << ' ' << wordie->getCount() << endl;
