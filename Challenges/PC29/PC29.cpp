@@ -1,8 +1,10 @@
 /*
  * Programming Challenge 29
+ * Stacy A. Rios
+ * May 21st, 2014
  */
 
-#include "treasurechest.h"
+#include "TreasureChest.h"
 
 #include <algorithm>
 #include <cstdlib>
@@ -17,7 +19,8 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+//int main (int argc, char* argv[])
+int main()
 {
 	unittest();
 	
