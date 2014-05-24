@@ -1,3 +1,7 @@
+//
+// Grader comments 2014.05.14
+// -20 points total
+//
 #pragma once
 
 #include <string>
@@ -66,6 +70,11 @@ class DLList{
             size++;
         }
         
+//
+// Grader comments 2014.05.14
+// Doesn't increment size.
+// -5 points.
+//
         /*
          * Adds a a node at the end of the list
          * @param contents an int with contents of a node
@@ -80,8 +89,15 @@ class DLList{
                 head=tail;
             else
                 tail->getPrevious()->setNext(tail);
+			
+			size++;	// Rob
         }
         
+//
+// Grader comments 2014.05.14
+// Doesn't always decrement size.
+// -5 points.
+//
         /*
          * Removes front node of list(head)
          */
@@ -91,6 +107,7 @@ class DLList{
             {
                 if(head == tail)
                 {
+					size--;			// Rob
                     delete head;
                     head = NULL;
                     tail = NULL;
@@ -106,6 +123,11 @@ class DLList{
             }
         }
         
+//
+// Grader comments 2014.05.14
+// Doesn't always decrement size.
+// -5 points.
+//
         /*
          * Removes node at end of list(tail).
          */
@@ -115,6 +137,7 @@ class DLList{
             {
                 if(head == tail)
                 {
+					size--;			// Rob
                     delete head;
                     head = NULL;
                     tail = NULL;

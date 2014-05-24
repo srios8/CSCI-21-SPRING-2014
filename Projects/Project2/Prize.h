@@ -5,7 +5,10 @@
 #include <string>
 using namespace std;
 
-
+//
+// Grader comments 2014.04.16
+// Need better function documentation. -40 points
+//
 class Prize
 {
     public:
