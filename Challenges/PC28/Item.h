@@ -2,17 +2,12 @@
 
 #include<sstream>
 #include<iostream>
+#include<string>
 #include<cstdlib>
 using namespace std;
 
 class Item
 {
-
-    private:
-    
-        string name;
-        unsigned int value;
-    	
     public:
     
         Item(string newName = "item", unsigned int newValue = 0);
@@ -23,10 +18,14 @@ class Item
         
         void setValue(unsigned int newValue);
         	
-        string getName();
+        string getName() const;
         
-        unsigned int getValue();
+        unsigned int getValue() const;
         	
         string toString();
         
+    private:
+    
+        string name;
+        unsigned int value;
 };

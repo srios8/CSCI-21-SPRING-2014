@@ -17,12 +17,12 @@ void Item::setValue(unsigned int newValue)
     value = newValue;
 }
 	
-string Item::getName()
+string Item::getName() const
 {
     return name;
 }
 
-unsigned int Item::getValue()
+unsigned int Item::getValue() const
 {
     return value;
 }
@@ -30,6 +30,6 @@ unsigned int Item::getValue()
 string Item::toString()
 {
     stringstream ss;
-    ss << name << ", $" << value << endl;
+    ss << name << ", $" << value;
     return ss.str();
 }
