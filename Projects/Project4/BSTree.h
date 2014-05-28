@@ -1,3 +1,7 @@
+//
+// Grader comments 2014.05.21
+// -70 points total
+//
 #pragma once
 
 #include "BSTNode.h"
@@ -82,7 +86,12 @@ class BSTree
      * @param targetData an int being searched for in the binary tree
      * @return calls private getData function
      */
-        T* getData(T targetData)
+		//
+		// Grader comments 2014.05.21
+		// Should be called get()
+		// -5 points
+		//
+		T* getData(T targetData)
         {
             return getData(targetData, root);
         }
@@ -172,11 +181,16 @@ class BSTree
             }
             else if (targetData < tempRoot->getData()) 
             {
-                return remove(targetData, tempRoot->getLeftChild());
+				//
+				// Grader comments 2014.05.22
+				// Shouldn't call remove() here; should call find().
+				// -30 points
+				//
+                return find(targetData, tempRoot->getLeftChild());
             }
             else if (targetData > tempRoot->getData()) 
             {
-                return remove(targetData, tempRoot->getRightChild());
+                return find(targetData, tempRoot->getRightChild());
             }
             else 
             {
@@ -238,6 +252,13 @@ class BSTree
                 targetData = tempRoot -> getData();
                 tempRoot = tempRoot -> getLeftChild();
                 delete maxNode;
+				
+				//
+				// Grader comments 2014.05.21
+				// Need to adjust tree size now that the node has been deleted.
+				// -5 points
+				//
+				count--;	// Rob -- to get the unit test to work
             }
             else
             {
@@ -282,7 +303,7 @@ class BSTree
             if(tempRoot!=NULL)
             {
                 inOrder(tempRoot->getLeftChild());
-                cout << tempRoot->getData() << " ";
+                cout << tempRoot->getData() << "\n";	// Rob -- to make testing easier
                 inOrder(tempRoot->getRightChild());
             }
         }
@@ -292,13 +313,19 @@ class BSTree
      * @param tempRoot a temporary BSTNode pointer used to avoid memory leaks
      *        and substitute pointer root for the moment
      */
+		//
+		// Grader comments 2014.05.21
+		// Should recursively call reverseOrder(), not inOrder().
+		// Causes the sorted data to come out wrong.
+		// -30 points
+		//
         void reverseOrder(BSTNode<T>* tempRoot)
         {
             if(tempRoot!=NULL)
             {
-                inOrder(tempRoot->getRightChild());
-                cout << tempRoot->getData() << " ";
-                inOrder(tempRoot->getLeftChild());
+                reverseOrder(tempRoot->getRightChild());
+                cout << tempRoot->getData() << "\n";	// Rob -- to make testing easier
+                reverseOrder(tempRoot->getLeftChild());
             }
         }
 };

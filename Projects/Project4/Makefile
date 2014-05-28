@@ -8,7 +8,7 @@
 # Target for programming project 4
 # Date completed: 05-16-2014
 
-FLAGS = -Wall -Werror -Wextra -pedantic
+FLAGS = -Wall -Werror -Wextra -pedantic -Wno-newline-eof
 
 Project4: Project4.o  Word.o
 	g++ $(FLAGSFLAGS) Project4.o  Word.o -o Project4
